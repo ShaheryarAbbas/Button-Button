@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Button Button</title>
+  <style>
+    /* Add styles for header, navbar, sidebar, and footer here */
+    #clock {
+      font-size: 30px;
+      margin-left: 30px;
+      display: none;
+    }
+    
+    .abc {
+        font-size: 30px;
+        margin-left: 15px;
+      }
+  </style>
+</head>
+<body style="margin: 2%;">
+  <header>
+    <h1>Button Button</h1>
+  </header>
+  <nav>
+    <!-- Add navigation links here -->
+  </nav>
+  <aside>
+    <!-- Add sidebar content here -->
+  </aside>
+  <main>
+    <p>When you click on any button, it will show you the thing mentioned in the button. You can click most of the buttons multiple times.</p>
+
+    <button id="pos-word-button">Positive Word</button>
+    <p id="pos-word-definition"></p>
+
+    <button id="neg-word-button">Negative Word</button>
+    <p id="neg-word-definition"></p>
+
+    <button id="story-button">Short Story</button>
+    <p id="short-story"></p>
+
+    <button id="longstory-button">Long Story</button>
+    <p id="long-story"></p>
+
+    <button id="fact-Button">Random Fact</button>
+    <p id="fact-Display"></p>
+
+    <button id="songbutton" onclick="displaySong()">Random Song</button>
+    <br><br>
+    <audio id="audioPlayer" controls style="display: none;"></audio>    
+    <p id="songdisplay"></p>
+    
+    
+
+    <button id="startBtn">Start</button>
+    <button id="stopBtn">Stop</button>
+    <button id="resetBtn">Reset</button>
+    <div class="abc" id="stopwatch"></div>
+    <br>
+
+
+    <button id="show-time-button">Current Local Time</button>
+    <div id="clock"></div>
+    <br><br>
+
+    <button id="dino-game-button">Play Dino Game</button>
+<div id="game-container" style="display:none;">
+  <iframe style="height: 200px;" src="http://www.trex-game.skipser.com/" width="100%" height="500"></iframe>
+</div>
+<br><br>
+<button id="calculator-button">Calculator</button>
+
+<div id="calculator" style="display:none;">
+  <input type="text" id="expression" disabled />
+  <br />
+  <button value="1">1</button>
+  <button value="2">2</button>
+  <button value="3">3</button>
+  <button value="+">+</button>
+  <br />
+  <button value="4">4</button>
+  <button value="5">5</button>
+  <button value="6">6</button>
+  <button value="-">-</button>
+  <br />
+  <button value="7">7</button>
+  <button value="8">8</button>
+  <button value="9">9</button>
+  <button value="*">*</button>
+  <br/>
+  <button value="C">C</button>
+  <button value="0">0</button>
+  <button value="=">=</button>
+  <button value="/">/</button>
+</div>
+    <br><br>
+    <button id="click-counter">Click me!</button>
+    <p class="abc" id="counter-display"></p>
+
+  
+    
+
+  </main>
+  <footer>
+    <!-- Add footer content here -->
+  </footer>
+  <script>
+    const poswordButton = document.getElementById("pos-word-button");
+    const poswordDefinition = document.getElementById("pos-word-definition");
+
+    const negwordButton = document.getElementById("neg-word-button");
+    const negwordDefinition = document.getElementById("neg-word-definition");
+
+    const storyButton = document.getElementById("story-button");
+    const thestory = document.getElementById("short-story");
+
+    const longstoryButton = document.getElementById("longstory-button");
+    const thelongstory = document.getElementById("long-story");
+
+
+    const factButton = document.querySelector("#fact-Button");
+    const factDisplay = document.querySelector("#fact-Display");
+    
+    const button = document.querySelector('#click-counter');
+    const display = document.querySelector('#counter-display');
+    let count = 0;
+
+    function displaySong() {
+    let song = songs[Math.floor(Math.random() * songs.length)];
+    document.getElementById("songdisplay").innerHTML = song.lyrics;
+    document.getElementById("songbutton").innerHTML = song.songtitle;
+    };
+
+//  click counter
+    {
+    let button = document.getElementById("click-counter");
+    let display = document.getElementById("counter-display");
+    let count = 0;
+    
+    button.addEventListener('click', function() {
+    count += 1;
+    if (count === 100) {
+    display.innerHTML = "Hurrah! 100 clicks... Great, now you can go do something productive with your fingers";
+    button.style.display = "none";
+    } 
+    else {
+    display.innerHTML = count;
+    }
+    });
+
+    }
+    
+
+//  Positive words
+    const poswords = [
+    { posword: "Fantastic", posdefinition: "Extremely good; excellent." },
+    { posword: "Prosperity", posdefinition: "The state of being successful and thriving; especially economically." },
+    { posword: "Adventure", posdefinition: "An exciting or remarkable experience." },
+    { posword: "Ineffable", posdefinition: "Ineffable means too great or extreme to be described or expressed in words. It reflects that feeling of awe such as what you feel when your first child is born." },
+    { posword: "Serendipity", posdefinition: "Serendipity is used to describe the occurrence and development of events by chance in a beneficial or happy way. That stroke of luck comes at exactly the right time, out of the blue." },
+    { posword: "Ethereal", posdefinition: "Ethereal means extremely light and delicate so that something appears not to be of this world. I associate this word with heavenly and beautiful things, such as dragonfly wings or a voice that gives you chills." },
+    { posword: "Iridescent ", posdefinition: "Iridescent is a word to describe seeing luminous colors that change when seen from different angles. This positive word reminds me of carefree days blowing bubbles and watching them float away." },
+    { posword: "Epiphany", posdefinition: "Epiphany is that sudden moment of realization or revelation. That light-bulb moment often changes your life. Everyone needs an epiphany now and then." },
+    { posword: "Luminescence", posdefinition: "Luminescence is when a substance gives off the light without being heated such as phosphorescence and fluorescence. The fun of chasing lightning bugs or stirring up the sea and being rewarded with an eerie green glow." },
+    { posword: "Eloquence", posdefinition: "Eloquence is persuasive and fluent in writing and speaking. Don’t we all wish to be eloquent at the right times? What a bonus when you can give a speech and engage your entire audience!" },
+    { posword: "Sonder", posdefinition: "Sonder is the realization that every random passerby is living a vivid, complex life full of their own ambitions, worries, friends, and routines, in which you might be an extra on a park bench or a lit office on their route. As a people watcher, this positive word resonates." },
+    { posword: "Effervescence", posdefinition: "Effervescence means enthusiastic and vivacious, and also the bubbles in your fizzy drink. This reminds me of the excitement of a child, perhaps even tasting their first fizzy drink." },
+    { posword: "Magnanimous", posdefinition: "Magnanimous means being forgiving or generous to someone who is not a friend or is less powerful than you. I think we all need to be magnanimous and this world would be a better place." },
+    { posword: "Benevolent", posdefinition: "Benevolent means being kindly and well-meaning. Similar to magnanimous, except this kindness being expressed to anyone. Being benevolent has its own rewards, and it makes you feel great too." },
+    { posword: "Amusement", posdefinition: "Amusement means enjoying entertainment or finding something funny.  The world needs more laughter and we should be able to find amusement in most situations, even laugh at ourselves." },
+    { posword: "Contentment", posdefinition: "Contentment is a state of satisfaction and happiness.  I believe that for most of us, life is about striving for contentment. Appreciate the small things to find contentment in your daily life." },
+    { posword: "Determination", posdefinition: "Determination is a firmness of purpose.  Achieving anything in life takes determination. Set the goal and succeed through determination." },
+    { posword: "Dignity", posdefinition: "Dignity is being worthy of respect or honor.  I like to believe everyone should be afforded basic dignity as a right especially our elders, who have so much to share if we listen." },
+    { posword: "Flourishing", posdefinition: "Flourishing means thriving, developing successfully and rapidly. We all want something to flourish: a flourishing bank balance, perhaps a flourishing business, a flourishing garden. What a versatile and evocative word." },
+    { posword: "Harmonious", posdefinition: "Harmonious has three lovely meanings tuneful, forming a pleasing whole, free from dissent and disagreement. I like the peaceful feel this word has, like music from a waterfall." },
+    { posword: "Lustrous", posdefinition: "Lustrous is basically a nicer word for shining. I like to think of this positive word as being used for hair and eyes, giving a description extra depth and reflection.  Who wouldn’t want lustrous hair?" },
+    { posword: "Noble", posdefinition: "Noble has a number of meanings, but I like the one which refers to a person showing high moral principles or good personal qualities. I like to think that our aim as humans should be to strive to be noble." },
+    { posword: "Respect", posdefinition: "Respect is the feeling of admiration due to their abilities, achievements, or qualities. It also refers to giving the necessary regard for other people’s rights and feelings.  Although for most people, respect is something that is earned, we should offer basic respect to all humans. #s.h.r" },
+    { posword: "Laughter", posdefinition: "Laughter is the sound of someone laughing. This sounds more than almost any other has a way of lifting spirits. Laughter is contagious and makes us feel good." },
+    { posword: "Tranquility", posdefinition: "Tranquility is the state of being calm and tranquil. We all need this sort of peace in our lives now and then to regroup." },
+    { posword: "Unconditional", posdefinition: "Unconditional means there are no conditions attached. I prefer this word as part of the phrase unconditional love. A love that transcends everything, there are no ifs and buts, a love that offers everything without demanding anything.-__" },
+    { posword: "Smiling", posdefinition: "Smiling is laughing in a smaller, quieter way. Turning those corners of the mouth up showing a happy look. Smiling is also contagious, and when it is genuine, it lights up your whole face." },
+    { posword: "Hope", posdefinition: "Hope is the expectation that something will happen. Even when situations are dire, keeping hope alive is what makes the human spirit fight through the worst of situations. Never lose hope." },
+    { posword: "Ambitious", posdefinition: "Having a strong desire for success or achievement" },
+    { posword: "Beaming", posdefinition: "Radiating or as if radiating light" },
+    { posword: "Blithesome", posdefinition: "Carefree and happy and lighthearted" },
+    { posword: "Broad-minded", posdefinition: "inclined to respect views and beliefs that differ from your own" },
+    { posword: "calm", posdefinition: "not agitated; without losing self-possession" },
+    { posword: "candid", posdefinition: "openly straightforward and direct without secretiveness" },
+    { posword: "Love", posdefinition: "Love is a strong feeling of affection and care for someone." },
+    { posword: "Peace", posdefinition: "Peace is a state of tranquility and calmness, free from disturbance." },
+    { posword: "Inspiration", posdefinition: "Inspiration is a feeling of excitement and creativity, often leading to new ideas." },
+    { posword: "Positive", posdefinition: "Positive is characterized by optimism, hope, and good feelings." },
+    { posword: "Success", posdefinition: "Success is the achievement of one's goals or the attainment of prosperity." },
+    { posword: "Bravery", posdefinition: "Bravery is the quality of facing fear and enduring pain or hardship." },
+    { posword: "Generosity", posdefinition: "Generosity is the quality of being unselfishly giving, often of one's time, resources, or money." },
+    { posword: "Trust", posdefinition: "Trust is a belief in the reliability, truth, ability, or strength of someone or something." },
+    { posword: "Strength", posdefinition: "Strength is the ability to endure hardship and overcome obstacles." },
+    { posword: "Wisdom", posdefinition: "Wisdom is the quality of having good judgement and common sense." },
+    { posword: "Humility", posdefinition: "Humility is the quality of being modest and not having an exaggerated sense of one's importance." },
+    { posword: "Serenity", posdefinition: "Serenity is a state of calmness and peacefulness, free from disturbance." },
+    { posword: "Courage", posdefinition: "Courage is the ability to do what is right, even in the face of fear or danger." },
+    { posword: "Love", posdefinition: "Love is a deep and meaningful affection towards someone or something. It is characterized by kindness, compassion, and a strong bond." },
+    { posword: "Peace", posdefinition: "Peace is a state of calmness and tranquility, free from conflict, violence, and disturbance. It is a state of mind and an ideal to strive for." },
+    { posword: "Grace", posdefinition: "Grace is a quality of elegance, charm, and good manners. It is also a term used to describe the unmerited favor of God towards humans." },
+    { posword: "Inspiration", posdefinition: "Inspiration is a feeling of creativity and excitement that comes from within. It often leads to the creation of something new and beautiful." },
+    { posword: "Friendship", posdefinition: "Friendship is a close relationship between two people based on mutual trust, support, and affection. It is a valuable aspect of life that brings joy and happiness." },
+    { posword: "Freedom", posdefinition: "Freedom is the state of being free from constraints, restrictions, or control. It is a fundamental human right that allows individuals to make their own choices." },
+    { posword: "Encouragement", posdefinition: "Encouragement is the act of giving support, confidence, and hope to someone. It is a powerful tool for helping others achieve their goals. #s.h.r" },
+    { posword: "Forgiveness", posdefinition: "Forgiveness is the act of letting go of resentment or anger towards someone who has wronged us. It is a crucial aspect of personal growth and healing." },
+    { posword: "Generosity", posdefinition: "Generosity is the act of giving freely and unselfishly without expectation of return. It is a quality that enriches the lives of both the giver and the receiver." },
+    { posword: "Optimism", posdefinition: "Optimism is a positive and hopeful outlook on life and the future. It is a state of mind that helps individuals persevere through difficulties." },
+    { posword: "Creativity", posdefinition: "Creativity is the ability to generate new and original ideas. It is a valuable resource that allows individuals to express themselves and solve problems." },
+    { posword: "Love", posdefinition: "Love is a deep feeling of affection and attachment towards someone or something. It is a powerful emotion that brings people together and is at the heart of strong relationships and families." },
+    { posword: "Confidence", posdefinition: "Confidence is a feeling of self-assurance and trust in one's abilities. It is important for personal growth and success, as having confidence in oneself helps in overcoming challenges and achieving goals." },
+    { posword: "Inspiration", posdefinition: "Inspiration is a feeling of excitement or creativity that comes from within. It is often a result of witnessing or experiencing something positive, and it can drive individuals to achieve their goals and pursue their passions." },
+    { posword: "Empathy", posdefinition: "Empathy is the ability to understand and share the feelings of others. It is an important aspect of human connection, as it allows individuals to connect on a deep emotional level and provide comfort and support to those in need." },
+    { posword: "Kindness", posdefinition: "Kindness is a quality of being friendly, generous, and considerate. It is a positive trait that helps to build strong relationships, promotes happiness and well-being, and makes the world a better place." },
+    { posword: "Generosity", posdefinition: "Generosity is the act of giving freely and without expecting anything in return. It is an act of kindness that shows a willingness to help others and makes a positive impact on both the giver and the recipient." },
+    { posword: "Patience", posdefinition: "Patience is the ability to wait calmly and without frustration. It is an important trait that helps individuals to remain calm and composed in difficult or stressful situations, and to handle challenges with grace." },
+    { posword: "Enthusiasm", posdefinition: "Enthusiasm is a feeling of excitement and eagerness. It is a positive emotion that is contagious and can inspire others to pursue their goals and passions with energy and determination." },
+    { posword: "Compassion", posdefinition: "Compassion is a feeling of concern for the suffering of others. It is an important aspect of empathy, and is often accompanied by a desire to help or alleviate the pain of those in need." },
+    { posword: "Determined", posdefinition: "Determined refers to a firm and unwavering resolve. It is a positive trait that drives individuals to overcome obstacles and pursue their goals with persistence and tenacity." },
+    { posword: "Motivation", posdefinition: "Motivation is a drive or an inner push to pursue a goal or an objective. It can be fueled by various internal and external factors such as personal desires, rewards, recognition or even helping others." },
+    { posword: "Empowerment", posdefinition: "Empowerment refers to the act of giving individuals the authority, resources and support needed to take control of their own lives and make decisions that affect their future." },
+    { posword: "Passion", posdefinition: "Passion is a strong and intense emotion towards a particular object, person, or activity. It drives individuals to engage in pursuits that bring them joy and fulfillment, regardless of the difficulties and obstacles they may face." },
+    { posword: "Gratitude", posdefinition: "Gratitude is a feeling of appreciation and thankfulness for the things, people and experiences that bring joy and positivity into one's life. It is a powerful emotion that can improve mental and emotional well-being." },
+    { posword: "Happiness", posdefinition: "Happiness is a positive emotion and a state of well-being. It is characterized by feelings of contentment, satisfaction, and joy." },
+    { posword: "Satisfaction", posdefinition: "Satisfaction is a feeling of contentment and fulfillment. It is a result of achieving one's goals, desires or expectations and is often accompanied by a sense of pride and accomplishment." },
+    { posword: "Joy", posdefinition: "Joy is a positive emotion characterized by feelings of happiness, delight and contentment. It is often a result of experiencing or witnessing positive events or situations." },
+    { posword: "Success", posdefinition: "Success is the achievement of one's goals or objectives. It is often defined and measured by an individual's personal standards and can include professional, financial, personal or spiritual accomplishments." },
+    { posword: "Resilience", posdefinition: "Resilience is the ability to adapt and bounce back from adversity, trauma, or difficult experiences. It involves the ability to maintain hope and positivity in the face of challenges, and to use problem-solving skills and support systems to overcome obstacles."},
+    { posword: "Spark", posdefinition: "A spark is a small but bright burst of light or energy that is often used as a symbol of inspiration, motivation or creativity"},
+    { posword: "Support", posdefinition: "Support is the act of providing help, encouragement, or assistance to another person, often during difficult times or in pursuit of a shared goal."},
+    { posword: "Spirit", posdefinition: "The spirit is a person's inner essence or character, often seen as the source of their motivations, desires, and ambitions."},
+    { posword: "Simplicity", posdefinition: "Simplicity is the quality of being straightforward, uncluttered and easy to understand, often seen as a positive attribute in individuals and experiences."},
+    { posword: "Passionate", posdefinition: "Passionate refers to a strong feeling of enthusiasm or excitement towards something. It often involves a strong emotional connection to a person, activity, or cause." },
+    { posword: "Patient", posdefinition: "Patience is the quality of being able to remain calm and composed even in difficult or frustrating situations. It is often seen as a virtue and is considered essential in many aspects of life." },
+    { posword: "Peaceful", posdefinition: "Peaceful refers to a state of calm, quiet, and serenity. It can describe a person who is free from agitation, or a place that is free from disturbance or conflict." },
+    { posword: "Perseverance", posdefinition: "Perseverance is the determination to continue despite difficulties or setbacks. It involves maintaining focus and not giving up in pursuit of a goal or ideal." },
+    { posword: "Perspective", posdefinition: "Perspective refers to a way of looking at something, especially a particular attitude or point of view. It can also refer to the ability to see things in their true relationship or relative importance." },
+    { posword: "Confidence", posdefinition: "Confidence is a feeling of trust in one's abilities, qualities, and judgment. It allows individuals to believe in themselves and their abilities, and to approach tasks and challenges with positivity and determination. Having confidence can help individuals overcome obstacles and achieve their goals." },
+    { posword: "Cheerfulness", posdefinition: "Cheerfulness is a state of being lighthearted, optimistic, and joyful. People who exhibit cheerfulness are often able to spread positivity and happiness to those around them, and their positive outlook on life can have a contagious effect on others." },
+    { posword: "Curiosity", posdefinition: "Curiosity is a natural desire to learn and explore new things. It is an innate drive that can lead individuals to discover new ideas, insights, and experiences. Having a curious mindset can help individuals grow and develop their skills, knowledge, and perspectives." },
+    { posword: "Compassion", posdefinition: "Compassion is a deep understanding and empathy for the suffering of others. It is characterized by a desire to help others and to alleviate their pain, and it is often motivated by a strong sense of kindness and altruism. People who exhibit compassion are often seen as caring and empathetic individuals." },
+    { posword: "Courage", posdefinition: "Courage is a quality that involves facing fear, danger, or difficulty with bravery and determination. It is a strength that allows individuals to persevere through challenging situations and to stand up for their beliefs and values. Courage is often seen as a valuable and admirable trait." },
+    { posword: "Clarity", posdefinition: "Clarity is a state of being clear, transparent, and easy to understand. It can refer to one's thoughts and ideas, as well as to one's speech and communication. Having clarity allows individuals to effectively express their ideas and to make decisions with confidence." },
+    { posword: "Creativity", posdefinition: "Creativity is the ability to produce new and original ideas, and to think outside the box. It is often characterized by an open and imaginative mindset, and by a willingness to take risks and try new things. Creativity can lead to innovation and growth in many areas of life." },
+    { posword: "Carefulness", posdefinition: "Carefulness is the quality of being attentive and diligent in one's actions and decisions. It involves taking the time to think things through, to consider all options, and to make thoughtful choices. People who exhibit carefulness are often seen as responsible and trustworthy individuals." },
+    { posword: "Contentment", posdefinition: "Contentment is a state of being satisfied and happy with one's current situation and circumstances. It is characterized by a sense of peace and happiness, and by a lack of desire for more or for something different. People who exhibit contentment are often seen as content and fulfilled individuals." },
+    { posword: "Celebration", posdefinition: "Celebration is the act of marking a special occasion or event with joy, happiness, and festivity. Celebrations can take many forms, from large parties and gatherings to intimate family gatherings, and they often involve food, drinks, music, and festivities. Celebrations are an important way to recognize and appreciate important moments in life." },
+    { posword: "Luminous", posdefinition: "Luminous means bright, shining or radiant. It is often used to describe a person or object that emits light or is full of life and energy. A luminous smile or a luminous room can light up a room with happiness and joy." },
+    { posword: "Lively", posdefinition: "Lively means energetic, vivacious, and full of life. It is often used to describe a person who is filled with enthusiasm and is always ready to embrace new experiences. A lively person is someone who is a joy to be around." },
+    { posword: "Lovely", posdefinition: "Lovely means beautiful, charming, and appealing. It is often used to describe a person, place, or thing that is pleasing to the eye, mind, or spirit. A lovely sunset, a lovely person, or a lovely home can make a person feel happy and content." },
+    { posword: "Laugh", posdefinition: "Laugh means to make a sound with your voice in response to something amusing or enjoyable. It is often a sign of joy and happiness, and it is a natural way for people to express their emotions. Laughing can also help reduce stress and increase feelings of well-being." },
+    { posword: "Leisurely", posdefinition: "Leisurely means taking one's time, relaxed, and unhurried. It is often used to describe a pace or style of life that is slow, calm, and stress-free. A leisurely walk, a leisurely pace, or a leisurely day can help people to enjoy life and feel relaxed." },
+    { posword: "Lucky", posdefinition: "Lucky means having good fortune, being fortunate, or experiencing good luck. It is often used to describe a person or situation that has a favorable outcome or result, especially when it is unexpected or undeserved. Feeling lucky can bring joy and happiness to a person's life." },
+    { posword: "Luxurious", posdefinition: "Luxurious means rich, elegant, and sumptuous. It is often used to describe a person, place, or thing that is lavish, opulent, and luxurious in style and quality. A luxurious spa, a luxurious vacation, or a luxurious car can bring feelings of comfort and indulgence." },
+    { posword: "Laughter", posdefinition: "Laughter is the sound that is produced when a person is amused or amused. It is often considered the best medicine and can bring joy and happiness to people's lives. Sharing a laugh with friends, family, or loved ones can help to strengthen relationships and build bonds." },
+    { posword: "Loyal", posdefinition: "Loyal means faithful, dedicated, and devoted. It is often used to describe a person who is unwavering in their support, love, or commitment to someone or something. A loyal friend, a loyal spouse, or a loyal customer can bring comfort and stability to a person's life." },
+    { posword: "Lavish", posdefinition: "Lavish means abundant, excessive, and luxurious. It is often used to describe a person, place, or thing that is abundant in style, quality, or generosity. A lavish feast, a lavish gift, or a lavish lifestyle can bring feelings of opulence and extravagance." },
+    { posword: "Health", posdefinition: "Health refers to the overall physical, mental, and emotional well-being of an individual. Good health allows people to participate in activities they enjoy and live life to the fullest. Taking care of one's health through proper nutrition, exercise, and regular check-ups can lead to a longer, happier life." },
+    { posword: "Heartfelt", posdefinition: "Heartfelt means sincere and genuine, coming from the heart. When something is expressed or felt with heartfelt emotion, it is a powerful and authentic experience that creates a deep connection with others." },
+    { posword: "Honesty", posdefinition: "Honesty refers to the quality of being truthful and upright. Being honest in one's dealings with others builds trust and respect, and creates an open and authentic environment for communication." },
+    { posword: "Heroism", posdefinition: "Heroism refers to the actions of someone who goes above and beyond to help others, even in the face of great danger. Heroes are individuals who display bravery, selflessness, and a strong sense of morality." },
+    { posword: "Humor", posdefinition: "Humor refers to the quality of being funny or amusing. A good sense of humor can lighten up even the most difficult situations, and bring people together. Humor can also provide a positive outlook on life and help individuals to see the brighter side of things." },
+    { posword: "Humility", posdefinition: "Humility refers to the quality of being modest and unassuming. It involves recognizing one's own limitations and shortcomings, and treating others with respect and kindness. Humility can lead to greater self-awareness and a deeper connection with others." },
+    { posword: "Harvest", posdefinition: "Harvest refers to the gathering of crops or the reaping of what has been sown. It is often seen as a time of abundance and gratitude, as well as a symbol of growth and renewal. The harvest can also bring people together to celebrate and share the fruits of their labor." },
+    { posword: "Harmony", posdefinition: "Harmony refers to a sense of balance and agreement between people or elements. When people are in harmony with each other, they work together smoothly and effectively, creating a positive and supportive environment. Harmony can also refer to the pleasing combination of musical notes." },
+    { posword: "Fulfillment", posdefinition: "Fulfillment is the achievement of one's desires, goals, and aspirations. It is a sense of satisfaction and contentment that comes from completing tasks, reaching objectives, and experiencing a sense of purpose in life." },
+    { posword: "Friendship", posdefinition: "Friendship is a close relationship between two individuals, built on mutual trust, support, and companionship. It is a bond that is strengthened through shared experiences and memories, and is often marked by feelings of affection, kindness, and generosity." },
+    { posword: "Fairness", posdefinition: "Fairness is the quality of being impartial, equitable, and just in one's dealings with others. It means treating others with respect, giving them equal opportunities, and avoiding biases, discrimination, or favoritism." },
+    { posword: "Freedom", posdefinition: "Freedom is the power or right to act, speak, or think as one wants without hindrance or restraint. It is the state of being autonomous, self-governing, and able to make decisions and choices without coercion or oppression." },
+    { posword: "Fortitude", posdefinition: "Fortitude is courage, bravery, and determination in the face of adversity or danger. It is the strength of character to persevere and endure, even in difficult or challenging situations." },
+    { posword: "Fulfillment", posdefinition: "Fulfillment is the achievement of one's desires, goals, and aspirations. It is a sense of satisfaction and contentment that comes from completing tasks, reaching objectives, and experiencing a sense of purpose in life." },
+    { posword: "Fun", posdefinition: "Fun is a feeling of joy, playfulness, and pleasure. It is an experience that is enjoyable and lighthearted, and often characterized by laughter, excitement, and creativity. Fun can come from activities, events, or even simple interactions with others." },
+    { posword: "Flexibility", posdefinition: "Flexibility is the ability to adapt to changing situations, circumstances, or requirements. It is an open-mindedness and willingness to modify one's plans, approaches, or perspectives in order to accommodate different needs or situations." },
+    { posword: "Forgiveness", posdefinition: "Forgiveness is the act of letting go of anger, resentment, or bitterness towards someone who has wronged us. It is the choice to let go of negative feelings and offer compassion, kindness, and understanding instead." },
+    { posword: "Fraternity", posdefinition: "Fraternity is a sense of camaraderie, unity, and brotherhood among a group of people. It is a bond that is formed through shared experiences, values, or interests, and often marked by feelings of mutual respect and support." },
+    { posword: "Magnificent", posdefinition: "Magnificent means having a grand and imposing appearance, and inspiring admiration, awe, or respect. It refers to something that is grand, splendid, and awe-inspiring, and often used to describe the beauty of nature or the achievements of human beings." },
+    { posword: "Motivational", posdefinition: "Motivational refers to something that has the power to inspire and encourage people to pursue their goals and dreams. It is often used to describe inspiring speeches, books, or events that help people to see their full potential and find the courage to take action." },
+    { posword: "Mindful", posdefinition: "Mindful refers to being aware of one's thoughts, feelings, and sensations in the present moment, and practicing this awareness as a form of meditation. It involves paying attention to one's experience in a non-judgmental way, which can help to reduce stress, improve focus, and increase feelings of well-being." },
+    { posword: "Memorable", posdefinition: "Memorable refers to something that is worth remembering and that is likely to be remembered for a long time. It refers to experiences, moments, or events that have a profound impact on a person, and that are likely to stay with them for many years." },
+    { posword: "Merry", posdefinition: "Merry means joyful, cheerful, and happy. It is often used to describe the joyful and lighthearted spirit of the holiday season, and refers to the feelings of happiness and well-being that come from spending time with friends and loved ones." },
+    { posword: "Meditative", posdefinition: "Meditative refers to the act of practicing mindfulness or deep concentration, in order to achieve a state of calm and inner peace. It is often associated with spiritual practices, such as yoga and meditation, and is believed to have many health benefits, including reducing stress, improving mood, and promoting well-being." },
+    { posword: "Masterful", posdefinition: "Masterful means having or showing exceptional skill or mastery in a particular field or activity. It is often used to describe individuals who are highly skilled and experienced in their chosen profession, and who have a deep understanding of their craft." },
+    { posword: "Magical", posdefinition: "Magical refers to something that is enchanting and mystical, and that has the power to evoke feelings of wonder and awe. It often refers to experiences or events that seem to defy the laws of nature, and that have a profound and lasting impact on the people who witness them." },
+    { posword: "Memorable", posdefinition: "Memorable means having the quality of being worth remembering or easily remembered. It refers to experiences, moments, or events that are significant, impactful, or enjoyable, and that are likely to be remembered for a long time." },
+    { posword: "Marvelous", posdefinition: "Marvelous means causing wonder or admiration, and being extremely good or pleasing. It is often used to describe something that is truly extraordinary, and that inspires feelings of awe and wonder in the people who experience it." },
+    { posword: "Radiant", posdefinition: "Radiant refers to something that is bright, shining, and full of light. It is often used to describe the appearance of a person who is happy, confident, and healthy, and is often used to describe their smile, eyes, and overall demeanor. " },
+    { posword: "Refreshing", posdefinition: "Refreshing refers to something that is invigorating, energizing, and rejuvenating. It is often used to describe an experience, such as taking a cold shower, drinking a cold beverage, or enjoying a breeze on a hot day. The feeling of refreshment is often associated with a sense of renewal and revitalization." },
+    { posword: "Resilient", posdefinition: "Resilient refers to the ability of a person or object to recover from difficulties and setbacks. It is often used to describe a person who is strong, persistent, and able to overcome adversity and challenges, despite facing many obstacles and setbacks. The quality of resilience is often seen as a sign of strength, determination, and inner fortitude." },
+    { posword: "Radiant", posdefinition: "Radiant refers to something that is bright, shining, and full of light. It is often used to describe the appearance of a person who is happy, confident, and healthy, and is often used to describe their smile, eyes, and overall demeanor." },
+    { posword: "Relaxed", posdefinition: "Relaxed refers to a state of calm, ease, and comfort. It is often used to describe a person who is free from stress, worry, and anxiety, and is able to feel at peace and comfortable in their surroundings. The feeling of relaxation is often associated with a sense of well-being, comfort, and contentment." },
+    { posword: "Responsible", posdefinition: "Responsible refers to the quality of being reliable, trustworthy, and accountable. It is often used to describe a person who is dependable, punctual, and able to fulfill their obligations and duties, without fail. The quality of responsibility is often seen as a sign of maturity, integrity, and reliability." },
+    { posword: "Resourceful", posdefinition: "Resourceful refers to the ability to find creative solutions to problems and challenges. It is often used to describe a person who is skilled, innovative, and able to overcome obstacles and find new and creative ways to achieve their goals. The quality of resourcefulness is often seen as a sign of intelligence, creativity, and problem-solving skills." },
+    { posword: "Respectful", posdefinition: "Respectful refers to the quality of showing consideration, regard, and esteem for others. It is often used to describe a person who is polite, courteous, and able to treat others with dignity and kindness, even in difficult situations. The quality of respectfulness is often seen as a sign of good manners, compassion, and empathy." },
+    { posword: "Ravishing", posdefinition: "Ravishing refers to something that is extremely attractive, beautiful, and alluring. It is often used to describe a person who is gorgeous, stunning, and irresistible, and is often used to describe their appearance, style, and charm. The feeling of being ravished is often associated with a sense of awe, enchantment, and desire." },
+    ];
+
+//  Negative words
+    const negwords = [
+    { negword: "Arrogant", negdefinition: "having or revealing an exaggerated sense of one's own importance or abilities" },
+    { negword: "Obstinate", negdefinition: "stubbornly refusing to change one's opinion or chosen course of action, despite attempts to persuade one to do so" },
+    { negword: "Abusive", negdefinition: "using language or behavior that is insulting or violent." },
+    { negword: "Aggravating", negdefinition: "making a situation worse or more difficult." },
+    { negword: "Alarming", negdefinition: "causing fear, anxiety or concern." },
+    { negword: "Annoying", negdefinition: "causing irritation or frustration." },
+    { negword: "Appalling", negdefinition: "causing shock or disgust." },
+    { negword: "Arrogant", negdefinition: "having an exaggerated sense of one's own importance." },
+    { negword: "Atrocious", negdefinition: "extremely bad or unpleasant." },
+    { negword: "Awful", negdefinition: "very bad or unpleasant." },
+    { negword: "Barbaric", negdefinition: "brutal and inhumane." },
+    { negword: "Bothersome", negdefinition: "causing trouble or inconvenience." },
+    { negword: "Brutal", negdefinition: "extremely harsh, violent or cruel." },
+    { negword: "Burdensome", negdefinition: "causing difficulty or heavy responsibility." },
+    { negword: "Callous", negdefinition: "indifferent or uncaring." },
+    { negword: "Chaotic", negdefinition: "in complete disorder or confusion." },
+    { negword: "Cowardly", negdefinition: "lacking courage or bravery." },
+    { negword: "Crude", negdefinition: "lacking sophistication or good taste." },
+    { negword: "Dangerous", negdefinition: "posing a threat to health, life, or safety." },
+    { negword: "Deceptive", negdefinition: "misleading or untruthful." },
+    { negword: "Defective", negdefinition: "having a flaw or fault that hinders performance." },
+    { negword: "Delusional", negdefinition: "having false or unrealistic beliefs." },
+    { negword: "Demoralizing", negdefinition: "causing loss of confidence or hope." },
+    { negword: "Depressing", negdefinition: "causing feelings of sadness or hopelessness." },
+    { negword: "Despicable", negdefinition: "deserving strong dislike or hatred." },
+    { negword: "Detrimental", negdefinition: "causing harm or damage." },
+    { negword: "Devastating", negdefinition: "causing great destruction or damage." },
+    { negword: "Disappointing", negdefinition: "not meeting expectations or hopes." },
+    { negword: "Disastrous", negdefinition: "having severe or damaging consequences." },
+    { negword: "Disgraceful", negdefinition: "bringing shame or dishonor." },
+    { negword: "Disgusting", negdefinition: "causing revulsion or strong dislike." },
+    { negword: "Dishonest", negdefinition: "not truthful or trustworthy." },
+    { negword: "Disloyal", negdefinition: "not faithful or committed." },
+    { negword: "Dismal", negdefinition: "gloomy, dark, and pessimistic." },
+    { negword: "Disturbing", negdefinition: "causing anxiety, fear or unease." },
+    { negword: "Distressing", negdefinition: "causing sadness, grief or pain." },
+    { negword: "Evil", negdefinition: "morally wrong, wicked or harmful." },
+    { negword: "Exhausting", negdefinition: "physically or mentally draining." },
+    { negword: "Fail", negdefinition: "not succeed or meet a standard." },
+    { negword: "Flawed", negdefinition: "having a defect or imperfection." },
+    { negword: "Foolish", negdefinition: "lacking common sense or good judgement." },
+    { negword: "Frustrating", negdefinition: "causing annoyance or disappointment." },
+    { negword: "Greedy", negdefinition: "having a strong desire for wealth or gain." },
+    { negword: "Gross", negdefinition: "disgusting or offensive." },
+    { negword: "Hateful", negdefinition: "having intense or passionate dislike." },
+    { negword: "Heartless", negdefinition: "lacking empathy or compassion." },
+    { negword: "Horrible", negdefinition: "very bad or unpleasant." },
+    { negword: "Hostile", negdefinition: "unfriendly or aggressive." },
+    { negword: "Ignorant", negdefinition: "lacking knowledge or understanding." },
+    { negword: "Impractical", negdefinition: "not feasible or realistic." },
+    { negword: "Inconsiderate", negdefinition: "disregarding the feelings or needs of others." },
+    { negword: "Inferior", negdefinition: "lower in quality, status or value." },
+    { negword: "Insincere", negdefinition: "not genuine or sincere." },
+    { negword: "Intolerant", negdefinition: "unwilling to accept opinions or beliefs different from one's own." },
+    { negword: "Invasive", negdefinition: "intruding on privacy or personal space." },
+    { negword: "Irresponsible", negdefinition: "not dependable or accountable." },
+    { negword: "Lazy", negdefinition: "unwilling to exert effort or work hard." },
+    { negword: "Lackluster", negdefinition: "lacking energy or excitement." },
+    { negword: "Lament", negdefinition: "to express grief or disappointment." },
+    { negword: "Lonely", negdefinition: "feeling isolated or alone." },
+    { negword: "Lousy", negdefinition: "of poor quality or lacking value." },
+    { negword: "Lethargic", negdefinition: "feeling sluggish and lacking energy." },
+    { negword: "Malicious", negdefinition: "having the intention of causing harm." },
+    { negword: "Mean", negdefinition: "unkind or cruel." },
+    { negword: "Nasty", negdefinition: "disgusting or offensive." },
+    { negword: "Neglectful", negdefinition: "failing to take care of responsibilities." },
+    { negword: "Numb", negdefinition: "lacking feeling or emotion." },
+    { negword: "Obnoxious", negdefinition: "extremely unpleasant or offensive." },
+    { negword: "Obstinate", negdefinition: "stubbornly refusing to change one's opinion or position." },
+    { negword: "Oppressive", negdefinition: "exercising excessive power and control." },
+    { negword: "Outrageous", negdefinition: "shocking or extreme." },
+    { negword: "Overbearing", negdefinition: "dominating or controlling." },
+    { negword: "Painful", negdefinition: "causing physical or emotional discomfort." },
+    { negword: "Pessimistic", negdefinition: "having a negative outlook on life or future events." },
+    { negword: "Pointless", negdefinition: "having no purpose or reason." },
+    { negword: "Prejudiced", negdefinition: "having a preconceived bias or dislike." },
+    { negword: "Rude", negdefinition: "disrespectful or impolite." },
+    { negword: "Selfish", negdefinition: "concerned only with one's own interests." },
+    { negword: "Senseless", negdefinition: "having no meaning or purpose." },
+    { negword: "Shameful", negdefinition: "causing feelings of disgrace or dishonor." },
+    { negword: "Ugly", negdefinition: "unpleasant or unattractive in appearance." },
+    { negword: "Vicious", negdefinition: "having a desire to harm others." },
+    { negword: "Unkind", negdefinition: "not showing kindness or concern for others." },
+    { negword: "Unjust", negdefinition: "not fair or reasonable." },
+    { negword: "Unruly", negdefinition: "difficult to control or manage." },
+    { negword: "Vicious", negdefinition: "having the intention to cause harm." },
+    { negword: "Vindictive", negdefinition: "having a desire to seek revenge." },
+    { negword: "Vile", negdefinition: "disgusting or offensive." },
+    { negword: "Vulgar", negdefinition: "crude or offensive in behavior or language." },
+    { negword: "Weak", negdefinition: "lacking strength or power." },
+    { negword: "Wicked", negdefinition: "evil or morally wrong." },
+    { negword: "Worrisome", negdefinition: "causing anxiety or concern." },
+    { negword: "Worthless", negdefinition: "having no value or usefulness." },
+    { negword: "Wrathful", negdefinition: "feeling or showing anger." },
+    { negword: "Wretched", negdefinition: "miserable or unhappy." },
+    { negword: "Yelling", negdefinition: "speaking loudly and aggressively." },
+    { negword: "Yielding", negdefinition: "easy to influence or manipulate." },
+    { negword: "Zany", negdefinition: "silly or lacking good sense." },
+    { negword: "Zealous", negdefinition: "having excessive enthusiasm or devotion." },
+    { negword: "Zigzag", negdefinition: "moving or going in a winding or indirect way." },
+    { negword: "Zonal", negdefinition: "of or relating to a specific zone." },
+    { negword: "Frustration", negdefinition: "Frustration is a feeling of annoyance or disappointment that occurs when one's goals or desires are blocked. It can result from a lack of control over a situation or from the perception that one is not making progress towards one's goals." },
+    { negword: "Anguish", negdefinition: "Anguish is intense pain or suffering, both physical and emotional. It can result from a variety of sources, including trauma, loss, and abuse, and it can have a profound impact on one's mental and physical well-being." },
+    { negword: "Despair", negdefinition: "Despair is a feeling of utter hopelessness and loss of faith in the future. It can result from a sense of overwhelming negativity and the belief that things will never get better, and it can lead to a lack of motivation and a withdrawal from life." },
+    { negword: "Misery", negdefinition: "Misery is a state of great unhappiness, pain, or suffering. It can be emotional or physical, and can often be caused by difficult life circumstances or experiences." },
+    { negword: "Despondency", negdefinition: "Despondency is a feeling of low spirits or discouragement, often resulting from disappointment or loss. It can lead to feelings of hopelessness and loss of motivation." },
+    { negword: "Disappointment", negdefinition: "Disappointment is a feeling of sadness or frustration that arises when expectations are not met or when something does not turn out as planned. It can result in a sense of disappointment, discouragement, and bitterness." },
+    { negword: "Gloom", negdefinition: "Gloom is a state of sadness, depression, or hopelessness. It often results from negative experiences or circumstances and can lead to feelings of bleakness and despair." },
+    { negword: "Melancholy", negdefinition: "Melancholy is a state of sadness, loneliness, or pensiveness, often accompanied by a feeling of mild depression. It can be caused by a variety of factors, including loss, disappointment, or dissatisfaction with life." },
+    { negword: "Anguish", negdefinition: "Anguish is a feeling of intense suffering or pain, both physically and emotionally. It can be the result of loss, trauma, or other forms of hardship, and it often leaves individuals feeling hopeless and overwhelmed."},
+    { negword: "Despair", negdefinition: "Despair is a feeling of utter hopelessness and loss of faith in the future. It is often accompanied by feelings of sadness, depression, and a lack of motivation, and can lead individuals to feel stuck and unable to move forward."},
+    { negword: "Depression", negdefinition: "Depression is a mental health condition characterized by persistent feelings of sadness, hopelessness, and a lack of energy. It can affect individuals in a variety of ways, including their thoughts, emotions, and behavior, and can be extremely debilitating."},
+    { negword: "Sorrow", negdefinition: "Sorrow is a deep and profound feeling of sadness or regret, often in response to a loss or disappointment. It can be accompanied by feelings of guilt, shame, or self-blame, and can leave individuals feeling defeated and broken."},
+    { negword: "Anxiety", negdefinition: "Anxiety is a feeling of worry, nervousness, or unease about something with an uncertain outcome. It can be a normal and healthy response to stress, but when it becomes excessive and affects daily life it may be a sign of an anxiety disorder. Symptoms can include physical reactions such as increased heart rate, sweating, and shaking, as well as mental reactions such as negative thoughts and avoidance of certain situations. Treatment options can include therapy, medication, and lifestyle changes." },
+    { negword: "Grief", negdefinition: "Grief is a natural and normal emotional response to the loss of a loved one, a relationship, or a cherished dream. It can manifest as a range of emotions such as sadness, anger, and guilt, and it can also cause physical symptoms such as fatigue and changes in appetite. Grief can be an intensely personal experience, and it is important for individuals to allow themselves time to grieve and seek support from friends, family, or a mental health professional as needed." },
+    { negword: "Neglect", negdefinition: "Neglect refers to the act of disregarding or failing to take care of something or someone. It often results in harm or neglect to the person or object that was neglected." },
+    { negword: "Narcissistic", negdefinition: "Narcissistic refers to a personality disorder characterized by excessive self-love and vanity. People with this disorder have an exaggerated sense of their own importance and a need for admiration from others." },
+    { negword: "Nasty", negdefinition: "Nasty means unpleasant, disgusting, or offensive. It can refer to a person's behavior, or it can refer to something's appearance or odor." },
+    { negword: "Nefarious", negdefinition: "Nefarious means evil or wicked. It is often used to describe activities or intentions that are malicious or harmful to others." },
+    { negword: "Negative", negdefinition: "Negative means expressing or implying the opposite of affirmation; denying." },
+    { negword: "Nihilistic", negdefinition: "Nihilistic refers to the belief that life has no inherent meaning or purpose. Nihilism is characterized by a sense of despair and hopelessness, and it can lead to feelings of meaninglessness and emptiness." },
+    { negword: "Noisy", negdefinition: "Noisy means making or characterized by loud and disturbing sounds. A noisy environment can cause discomfort, distraction, and stress." },
+    { negword: "Numb", negdefinition: "Numb means lacking the ability to feel sensation, either physically or emotionally. It is often used to describe a state of shock, disconnection, or emotional numbness." },
+    { negword: "Nasty", negdefinition: "Nasty means unpleasant, disgusting, or offensive. It can refer to a person's behavior, or it can refer to something's appearance or odor." },
+    { negword: "Nagging", negdefinition: "Nagging means to persistently criticize or complain about something or someone. It is often used to describe someone who constantly nags or annoys another person with their complaints." },
+    { negword: "Guilt", negdefinition: "Guilt is a feeling of responsibility or remorse for doing something wrong or causing harm. It can arise from a real or imagined violation of a moral or ethical standard, and is often accompanied by feelings of shame, self-blame, and regret. Guilt can be a positive and healthy response to unethical behavior, as it helps individuals make amends and change their behavior. However, excessive or irrational guilt can be debilitating and can lead to anxiety, depression, and low self-esteem." },
+    { negword: "Gloom", negdefinition: "Gloom is a feeling of depression, sadness, or hopelessness. It is often characterized by a lack of energy, motivation, and interest in life, and can be accompanied by feelings of emptiness, boredom, and apathy. Gloom can be triggered by a wide range of factors, including life events, physical or emotional stress, or medical conditions such as depression or anxiety. It is important to seek help from a mental health professional if you are experiencing symptoms of gloom, as early intervention can improve the chances of a positive outcome." },
+    { negword: "Greed", negdefinition: "Greed is an excessive or insatiable desire for material wealth or possessions, often to the point of disregarding the well-being of others. It is a negative trait that can lead to unethical or selfish behavior, such as theft, exploitation, or manipulation. Greed can be motivated by many factors, including a fear of poverty, a desire for status or power, or a lack of self-esteem. It can be harmful to individuals, organizations, and society as a whole, and is often associated with negative outcomes such as corruption, conflict, and environmental degradation." },
+    { negword: "Gossip", negdefinition: "Gossip is the sharing of information or rumors about someone, often for the purpose of entertaining or entertaining others. It is often negative in nature, and can be harmful to the individuals being discussed, as well as to the person spreading the gossip. Gossip can damage reputations, spread false information, and create conflict, and is often considered to be a breach of trust or privacy. It is important to be mindful of the impact of gossip, and to engage in respectful and responsible communication that is free from judgment and negativity." },
+    { negword: "Obstacle", negdefinition: "An obstacle is an impediment, barrier, or hindrance that prevents progress or success. It can be an external or internal challenge that one must overcome in order to achieve their goals and succeed in their endeavors." },
+    { negword: "Oppression", negdefinition: "Oppression refers to the systematic and sustained mistreatment of a group of people by those in power. This can include physical, economic, social, and political forms of domination, which can lead to the denial of basic human rights and freedoms, and the exploitation of marginalized groups." },
+    { negword: "Ostracism", negdefinition: "Ostracism refers to the act of excluding someone from a social group or community. It can involve verbal abuse, shunning, or being ignored by others, and can lead to feelings of loneliness, isolation, and low self-esteem." },
+    { negword: "Overload", negdefinition: "Overload refers to an excessive amount of work, tasks, or responsibilities that becomes too much to handle. It can result in feelings of stress, burnout, and fatigue, and can have negative impacts on one's mental and physical health." },
+    { negword: "Overbearing", negdefinition: "Overbearing refers to someone who is excessively controlling, demanding, or bossy. Such individuals may dominate conversations, make decisions for others, or try to micromanage their lives, leading to feelings of frustration, resentment, and stress." },
+    { negword: "Overcritical", negdefinition: "Overcritical refers to someone who is excessively critical or judgmental of others. Such individuals may frequently point out flaws, mistakes, or shortcomings, and can lead to feelings of insecurity, low self-esteem, and reduced confidence." },
+    { negword: "Overwhelm", negdefinition: "Overwhelm refers to a state of being completely overcome by stress, anxiety, or other strong emotions. It can result from having too many responsibilities or tasks, and can lead to feelings of exhaustion, burnout, and difficulty functioning." },
+    { negword: "Overemphasize", negdefinition: "Overemphasize refers to putting too much emphasis, importance, or weight on a particular aspect or issue. This can result in neglecting other important aspects or losing perspective, and can lead to feelings of stress, frustration, and dissatisfaction." },
+    { negword: "Obligation", negdefinition: "An obligation refers to a moral, legal, or social duty that one is required to fulfill. It can result in feelings of pressure, guilt, or stress, especially when one is unable to fulfill their responsibilities, or when the expectations are unrealistic or excessive." },
+    { negword: "Obscurity", negdefinition: "Obscurity refers to a state of being unknown, unacknowledged, or hidden from view. It can result in feelings of invisibility, insignificance, and lack of fulfillment, and can lead to a sense of being undervalued or marginalized." },
+    { negword: "Anguish", negdefinition: "Anguish is a feeling of intense emotional pain, suffering, or distress. It often results from a difficult situation, such as a breakup, death, or loss, and it can have a profound effect on a person's mental and physical well-being." },
+    { negword: "Apathy", negdefinition: "Apathy is a lack of interest, enthusiasm, or concern for things that others might find exciting, important, or meaningful. It is often a symptom of depression or boredom, and it can make it difficult for a person to engage with the world around them." },
+    { negword: "Abjection", negdefinition: "Abjection is a feeling of intense disgust, horror, or revulsion, often in response to something that is considered disgusting, morally reprehensible, or contaminated. It can lead to feelings of fear and anxiety, and it can interfere with a person's ability to interact with the world around them." },
+    { negword: "Abhorrence", negdefinition: "Abhorrence is a feeling of intense dislike or hatred, often in response to something that is considered morally wrong, evil, or distasteful. It can lead to feelings of anger, disgust, or revulsion, and it can interfere with a person's ability to engage with the world around them." },
+    { negword: "Alienation", negdefinition: "Alienation is a feeling of disconnection or isolation from others, often as a result of a perceived difference or lack of commonality. It can lead to feelings of loneliness, insecurity, or low self-esteem, and it can interfere with a person's ability to form meaningful relationships and participate in society." },
+    { negword: "Aversion", negdefinition: "Aversion is a strong feeling of dislike or disinterest in something, often as a result of past experience, cultural or personal biases, or a learned association. It can lead to feelings of distaste, discomfort, or avoidance, and it can interfere with a person's ability to engage with the world around them." },
+    { negword: "Anxiety", negdefinition: "Anxiety is a feeling of unease, such as worry or fear, that can be mild or severe. It is often a response to a perceived threat, and it can lead to physical and psychological symptoms, such as increased heart rate, sweating, or difficulty concentrating." },
+    { negword: "Anguish", negdefinition: "Anguish is a feeling of intense emotional pain, suffering, or distress. It often results from a difficult situation, such as a breakup, death, or loss, and it can have a profound effect on a person's mental and physical well-being." },
+    { negword: "Angst", negdefinition: "Angst is a feeling of anxiety or nervousness, often in response to a perceived threat or uncertainty. It can lead to feelings of worry, fear, or hopelessness, and it can interfere with a person's ability to perform well in various situations." },
+    { negword: "Abandonment", negdefinition: "Abandonment is a feeling of being deserted or rejected by someone or something that is important to a person. It can lead to feelings of loneliness, insecurity, or low self-esteem, and it can interfere with a person's ability to form meaningful relationships and participate in society." },
+    { negword: "Boredom", negdefinition: "Boredom is a feeling of disinterest or lack of excitement that arises from a lack of activities or stimuli to engage with. It is often accompanied by a sense of restlessness and dissatisfaction, and it can lead to feelings of frustration and unhappiness." },
+    { negword: "Betrayal", negdefinition: "Betrayal is a violation of trust or loyalty in a relationship. It can take the form of broken promises, deceit, or disclosure of confidential information, and it can cause feelings of anger, hurt, and disappointment in those affected." },
+    { negword: "Bigotry", negdefinition: "Bigotry is a type of prejudice or discrimination that is based on a person's race, religion, gender, or sexual orientation. It is characterized by an unwavering belief in one's superiority, as well as a tendency to demonize those who are different. Bigotry can cause harm to both individuals and communities, and it often leads to conflict and division." },
+    { negword: "Bitterness", negdefinition: "Bitterness is a feeling of resentment or anger that stems from a perceived injustice or wrong-doing. It is often directed towards a specific person or group of people, and it can be difficult to overcome, leading to a negative and hostile outlook on life." },
+    { negword: "Blame", negdefinition: "Blame is the act of attributing responsibility or fault for a mistake or problem to someone else. It can cause feelings of anger and defensiveness in those being blamed, and it can also create tension and conflict in relationships. Instead of blaming others, it is often more productive to take responsibility for one's actions and work together to find a solution." },
+    { negword: "Burden", negdefinition: "Burden refers to a heavy load or responsibility that is difficult to bear. It can come in many forms, such as physical, emotional, or financial, and it can cause feelings of stress and exhaustion. Sharing the burden with others, or seeking support and help, can often relieve some of its weight." },
+    { negword: "Breach", negdefinition: "A breach refers to a violation or breaking of a contract, law, or agreement. It can cause harm to individuals or organizations, and it often results in legal or financial consequences. To avoid breaches, it is important to carefully review and understand agreements before entering into them." },
+    { negword: "Bullying", negdefinition: "Bullying is a repeated and intentional form of aggression or intimidation towards someone who is perceived as weaker or vulnerable. It can take many forms, such as physical, emotional, or cyber bullying, and it can have serious and long-lasting effects on the wellbeing of the victim. It is important to address bullying and create safe and inclusive environments for all." },
+    { negword: "Spite", negdefinition: "Spite refers to a feeling of ill will or resentment towards someone, often leading to malicious or harmful actions towards them. It is a negative emotion often characterized by a desire to harm or seek revenge, and can cause individuals to act in ways that are unkind or hurtful." },
+    { negword: "Scorn", negdefinition: "Scorn is a feeling of contempt or disrespect towards someone or something, often accompanied by a feeling of superiority or disdain. It can be a result of disappointment or frustration, and can cause individuals to view others or situations with disrespect or ridicule." },
+    { negword: "Skepticism", negdefinition: "Skepticism refers to a lack of trust or confidence in something, often accompanied by a questioning attitude. It can lead individuals to doubt the authenticity or validity of a claim or statement, and can cause them to adopt a more critical or suspicious perspective." },
+    { negword: "Spitefulness", negdefinition: "Spitefulness refers to a tendency to act out of ill will or resentment towards others, often leading to harmful or hurtful actions. It is characterized by a desire to cause harm or distress, and can result in individuals acting in unkind or malicious ways." },
+    { negword: "Scornfulness", negdefinition: "Scornfulness refers to a tendency to view others or situations with disrespect or disdain, often accompanied by feelings of superiority or ridicule. It can be a result of disappointment or frustration, and can cause individuals to adopt a critical or judgmental perspective." },
+    { negword: "Skepticism", negdefinition: "Skepticism refers to a lack of trust or confidence in something, often accompanied by a questioning attitude. It can lead individuals to doubt the authenticity or validity of a claim or statement, and can cause them to adopt a more critical or suspicious perspective." },
+    { negword: "Sullenness", negdefinition: "Sullenness refers to a mood of sadness or depression, often accompanied by a lack of energy or enthusiasm. It can result in individuals becoming withdrawn or isolated, and can cause them to feel disinterested or disengaged in their surroundings." },
+    { negword: "Surliness", negdefinition: "Surliness refers to a mood or attitude of hostility or irritability, often leading to uncooperative or unfriendly behavior. It can cause individuals to adopt a grumpy or rude demeanor, and can result in them acting in ways that are unpleasant or difficult for others." },
+    { negword: "Skepticalness", negdefinition: "Skepticalness refers to a general lack of trust or confidence in something, often accompanied by a questioning attitude. It can lead individuals to doubt the authenticity or validity of a claim or statement, and can cause them to adopt a more critical or suspicious perspective." },
+    { negword: "Sourness", negdefinition: "Sourness refers to a mood or attitude of bitterness or anger, often resulting in unpleasant or hostile behavior. It can be a result of disappointment or frustration, and can cause individuals to adopt a critical or unfriendly demeanor." },
+    { negword: "Pain", negdefinition: "Pain is an unpleasant sensation that can range from mild to severe and can be physical or emotional in nature. It is often caused by injury, illness, or stress and can interfere with daily activities and overall quality of life." },
+    { negword: "Paranoia", negdefinition: "Paranoia is an irrational fear or distrust of others, often accompanied by delusions or hallucinations. It is a symptom of mental disorders such as schizophrenia or obsessive-compulsive disorder and can cause feelings of isolation and distrust." },
+    { negword: "Pessimism", negdefinition: "Pessimism is a negative outlook on life, characterized by the belief that things will turn out poorly or that things are not as good as they appear. Pessimism can lead to feelings of hopelessness and despair, and can impact a person's overall happiness and wellbeing." },
+    { negword: "Petrification", negdefinition: "Petrification is the process of becoming rigid or stiff, as if turned to stone. In a psychological context, petrification can refer to a state of fear or shock that causes a person to become frozen or immobilized." },
+    { negword: "Phobia", negdefinition: "Phobia is an intense fear or anxiety disorder that is associated with a specific object or situation. Phobias can interfere with daily life, causing avoidance behaviors and extreme distress." },
+    { negword: "Pitfall", negdefinition: "A pitfall is a hidden danger or a trap that is difficult to see or avoid. In a figurative sense, a pitfall can refer to any hidden danger or problem that has the potential to cause harm or disappointment." },
+    { negword: "Plague", negdefinition: "A plague is a serious and often contagious disease that can cause widespread death and suffering. In a more general sense, a plague can refer to any widespread disaster or misfortune." },
+    { negword: "Poison", negdefinition: "Poison is a substance that is harmful or deadly when ingested or absorbed into the body. Poison can cause a range of symptoms, including nausea, vomiting, dizziness, and death." },
+    { negword: "Pollution", negdefinition: "Pollution is the presence or introduction into the environment of substances that can cause harm or discomfort to living organisms. Pollution can have a range of negative impacts, including harm to health, damage to the environment, and loss of wildlife." },
+    { negword: "Poverty", negdefinition: "Poverty is a state or condition of having little or no money, goods, or means of support. Poverty can lead to a range of negative outcomes, including hunger, homelessness, and poor health." },
+
+    ];
+
+//  Short Stories
+    const shortstories = [
+    {title: "A New Adventure", shortstory: "Samantha had always lived a simple life in her small hometown. She had a stable job and a close group of friends, but she always felt like something was missing. One day, she stumbled upon a flyer for a travel agency that specialized in adventure trips. Without hesitation, Samantha signed up for a month-long trip to the Amazon rainforest. It was the opportunity of a lifetime and she couldn't wait to see what awaited her in the jungle. She was nervous, but she was also excited to finally live life to the fullest."},
+    { title: "A New Adventure", shortstory: "Samantha had always dreamed of traveling the world. She saved every penny she could and finally took the plunge, quitting her job and booking a one-way ticket to Thailand. She was filled with excitement as she explored new cultures, tried new foods, and met new people. Despite the occasional homesickness and difficulties she encountered, she knew she was exactly where she was meant to be and was determined to make the most of every moment. "},
+    { title: "A Special Gift", shortstory: "John had been searching for the perfect gift for his girlfriend's birthday for weeks. He wanted it to be special, to show just how much he loved her. On the day of her birthday, he nervously presented her with a small box. She opened it to find a locket, inside which was a picture of the two of them, along with a message engraved on the back, declaring his love for her. Tears welled up in her eyes as she realized just how much he cared for her. "},
+    { title: "The Brave Firefighter", shortstory: "Tommy was a firefighter, known for his bravery and quick thinking. One day, a large fire broke out in a high-rise building and people were trapped inside. Tommy and his team raced to the scene, and he was the first to enter the burning building. Despite the smoke and heat, he managed to rescue several people, including a small child. He emerged from the building, soot-covered and exhausted, but with a sense of pride and accomplishment. "},
+    { title: "A Second Chance", shortstory: "Emily had always struggled in school, but she never gave up. She studied late into the night and worked hard to improve her grades. Her hard work paid off when she received a scholarship to attend college. She was determined to make the most of this second chance, and she threw herself into her studies. She graduated with honors and went on to have a successful career, proving to herself and others that anything is possible with determination and hard work."},
+    { title: "The Power of Friendship", shortstory: "Jack and Sara were best friends, they had known each other since they were children. They went through all the ups and downs of life together, always supporting each other. One day, Jack was diagnosed with a serious illness and Sara was there for him every step of the way, cheering him on and helping him through his treatment. He eventually made a full recovery, and he knew that he owed it all to his best friend, who had never given up on him. "},
+    { title: "The Big Game", shortstory: "The high school football team had been working hard all season for this moment, the big game. The stadium was packed with fans, cheering on their team. The tension was palpable as the game got underway, but the team's star player, Jamie, remained calm and focused. With just seconds left on the clock, and the score tied, Jamie received the ball and ran it into the end zone, scoring the winning touchdown. The crowd erupted in cheers as Jamie's teammates lifted him onto their shoulders, celebrating their victory."},
+    { title: "A New Home", shortstory: "Maria and her family had been homeless for years, moving from shelter to shelter. But one day, they were given the opportunity to move into a small but cozy apartment. Despite their hardships, they worked hard to make it their own, decorating it with hand-me-down furniture and personal touches. They finally had a place to call home, and they cherished every moment they spent there, building a life filled with love and laughter."},
+    { title: "The Lost City", shortstory: "A young adventurer named Sarah sets out to find a lost city that is said to be filled with treasure. She travels through dangerous territories and overcomes many obstacles along the way. Eventually, she finds the city and discovers that it is not only filled with riches but also holds a dark secret. Sarah must use her wit and bravery to uncover the truth and escape the city before it's too late."},
+    { title: "The Time Traveler", shortstory: "A scientist named Jack invents a time machine and decides to go back in time to see the dinosaur era. However, something goes wrong and he ends up in the future, far beyond his own time. In this new world, he meets a group of people who are fighting against a tyrannical government and they need his help to fix their own time machine. Jack joins forces with them and together they embark on a dangerous mission to change the course of history."},
+    { title: "The Secret Garden", shortstory: "A young girl named Lily discovers a hidden garden in the heart of the city. The garden is overgrown and abandoned, and Lily is drawn to its beauty and mystery. She spends every day in the garden, exploring and uncovering its secrets. One day, she discovers a hidden door that leads to a mysterious underground room filled with ancient artifacts. With the help of her new friends, Lily sets out on a journey to uncover the truth about the garden and its hidden past."},
+    { title: "The Missing Diamond", shortstory: "A famous detective named Mr. Holmes is tasked with finding a missing diamond that has been stolen from a wealthy family. He travels to different parts of the world, following leads and gathering clues, until he finally arrives at the truth. With his unparalleled intellect and detective skills, Mr. Holmes is able to solve the case and retrieve the stolen diamond, bringing the culprit to justice."},
+    { title: "The Secret Garden", shortstory: "Once upon a time, there was a little girl named Mary who lived in a big city. She was always unhappy because she never had any friends. One day, her uncle took her to a big old house in the countryside. The house had a secret garden that nobody was allowed to enter. Mary discovered the secret garden and found that it was full of beautiful flowers and birds. She started to spend all her time there, and soon she was no longer lonely. The garden brought her joy and peace, and she made many friends there. Mary promised to keep the secret garden safe and always take care of it. She lived happily ever after."},
+    { title: "The Lost Treasure", shortstory: "There was a pirate named Captain Blackbeard who had buried his treasure on a remote island. He had left a map to the treasure behind, but it was lost for many years. One day, a young boy named Jack found the map and set out on a journey to find the treasure. He sailed across the seas and encountered many dangers, but he never gave up. Finally, he reached the island and dug up the treasure. It was more wealth than he had ever imagined. Jack was very happy and decided to share his treasure with the people of the island. They all lived happily ever after."},
+    { title: "The Enchanted Forest", shortstory: "There was a magical forest filled with talking animals and enchanted flowers. A young prince named Henry had been lost in the forest for days. He met a wise old owl who told him the way out, but the prince was curious about the magic of the forest. He decided to explore and met many creatures along the way. The prince discovered that the magic of the forest was created by a powerful fairy who lived at the heart of the forest. The fairy granted him a wish, and the prince wished to always be surrounded by magic. The fairy granted his wish, and the prince lived happily ever after in the enchanted forest."},
+    { title: "The Brave Knight", shortstory: "There was a kingdom in peril, as a fearsome dragon was terrorizing the people. A brave knight named Sir Thomas rode out to face the dragon. He fought a fierce battle, but in the end, the knight emerged victorious. The people of the kingdom cheered and celebrated their hero. The king offered Sir Thomas anything he desired as a reward, but the knight only asked for a quiet life on a small farm. The king granted his request, and Sir Thomas lived happily ever after with his family and animals."},
+    { title: "The Princess and the Pea", shortstory: "Once upon a time, there was a prince who wanted to marry a real princess. He searched far and wide but couldn't find one. One day, a beautiful young woman claimed to be a princess, but the prince was skeptical. He set a test for the woman, placing a pea under 20 mattresses and 20 feather beds. If she could feel the pea, she would be a real princess. The woman passed the test, and the prince realized she was indeed a real princess. They got married and lived happily ever after."},
+    { title: "The Lost City", shortstory: "A group of adventurers set out to find the lost city of Eldorado, deep in the Amazon jungle. They encountered many obstacles along the way, including dangerous animals, treacherous terrain, and hostile tribes. But the greatest challenge came from within their own group, as greed and mistrust threatened to tear them apart. Despite the odds, they finally reached the lost city and discovered its incredible wealth, but they also learned a valuable lesson about the true meaning of success and happiness."},
+    { title: "The Time Traveler", shortstory: "A brilliant scientist invents a time machine and travels back to the medieval ages. He tries to blend in and avoid changing the timeline, but his advanced knowledge and technology attracts attention from the local lords. He must navigate the treacherous political landscape and avoid execution as a sorcerer. Meanwhile, he grapples with the morality of influencing the past and realizes that his actions have unintended consequences for the future."},
+    { title: "The Haunted Mansion", shortstory: "A family moves into a seemingly perfect mansion, but strange occurrences soon begin to haunt them. Doors slam shut, footsteps echo in empty halls, and ghostly apparitions appear in the dead of night. The family seeks the help of a paranormal investigator, who uncovers the dark history of the mansion and the vengeful spirits trapped within its walls. In a race against time, they must find a way to lay the spirits to rest and escape the mansion before it's too late."},
+    { title: "The Lost Treasure of Captain Kidd", shortstory: "A group of treasure hunters sets out to find the legendary treasure of the infamous pirate Captain Kidd. They travel the high seas, deciphering clues and facing off against rival treasure hunters and pirate gangs. After many close calls and daring exploits, they finally reach the treasure island and unearth the treasure, but they soon discover that the true reward was the friendship and camaraderie they forged along the way."},
+    { title: "The Alien Invasion", shortstory: "Earth is under attack from an alien race determined to conquer and enslave humanity. A small band of survivors must band together and fight back, using their wits, bravery, and technology to outsmart and defeat the invaders. They discover that the aliens are vulnerable to a certain frequency of sound and rally the world to join them in a final showdown. In a nail-biting battle, they defeat the aliens and save the planet, but they also realize that they have much to learn from the beings they defeated."},
+    { title: "The Lost Treasure", shortstory: "A young man named Jack went on an adventure to find a lost treasure hidden in the jungle. He faced many challenges, but with determination and hard work, he finally found the treasure. The chest was filled with gold coins and precious jewels. Jack was overjoyed and decided to use the wealth to help those in need. He returned home as a hero and was loved by all."},
+    { title: "The Magic Lamp", shortstory: "A poor man named Ali found a magic lamp in the marketplace. He rubbed it and a genie appeared, granting him three wishes. Ali wished for wealth, power and love. The genie granted his wishes and Ali became the richest and most powerful man in the land. However, he soon realized that money couldn't buy love and happiness. He used his final wish to ask the genie to take back all his wealth and power, and to find true love."},
+    { title: "The Brave Knight", shortstory: "A knight named Sir James set out on a quest to save a princess who had been kidnapped by an evil dragon. He encountered many obstacles along the way, but he was determined to rescue the princess. Sir James finally arrived at the dragon's lair and fought a fierce battle. He was victorious and rescued the princess. They fell in love and were married in a grand ceremony. Sir James lived the rest of his life as a brave and honored knight."},
+    { title: "The Lost City", shortstory: "An explorer named Sarah went on a journey to find a lost city rumored to be filled with treasure. She traveled through dangerous terrains, facing many challenges along the way. Finally, Sarah found the lost city and was amazed at the wealth and beauty of the place. She discovered that the city was protected by a curse, and that whoever took the treasure would be doomed to suffer a terrible fate. Sarah chose to leave the city and its treasure untouched, content with the knowledge she had gained."},
+    { title: "The Haunted House", shortstory: "A family moved into a new house, but they soon realized that it was haunted. Strange noises and ghostly apparitions terrorized the family. They decided to call in a paranormal investigator, who discovered that the house was haunted by the ghost of a woman who had been murdered there. The investigator helped the family to lay the ghost to rest, and the house was finally at peace. The family lived happily ever after in their new home."},
+    { title: "The Enchanted Forest", shortstory: "A young girl named Lily went on a journey to find the Enchanted Forest, where she had heard that fairies lived. She faced many dangers along the way, but she was determined to find the fairies. Finally, Lily arrived at the Enchanted Forest and was greeted by the fairies. They granted her a wish and she asked for happiness and love. The fairies granted her wish and Lily lived a happy and contented life."},
+    { title: "The Curse of the Pharaohs", shortstory: "An archaeologist named Tom went on an expedition to find the tomb of an ancient pharaoh. He was warned that the tomb was cursed and that anyone who entered it would suffer a terrible fate. Tom was determined to find the tomb, and he finally discovered it. However, as he entered the tomb, he was struck by the curse and he fell ill. He realized that he had been foolish to ignore the warnings and he learned a valuable lesson about respecting ancient traditions."},
+    ];
+
+//  Long Stories
+    const longstories = [
+    {storytitle: "All the Difference in The World", longstory: " Every Sunday morning I take a light jog around a park near my home.  There’s a lake located in one corner of the park.  Each time I jog by this lake, I see the same elderly woman sitting at the water’s edge with a small metal cage sitting beside her.  This past Sunday my curiosity got the best of me, so I stopped jogging and walked over to her.  As I got closer, I realized that the metal cage was, in fact, a small trap.  There were three turtles, unharmed, slowly walking around the base of the trap.  She had a fourth turtle in her lap that she was carefully scrubbing with a sponge brush.  “Hello,” I said.  “I see you here every Sunday morning.  If you don’t mind my nosiness, I’d love to know what you’re doing with these turtles.”  She smiled.  “I’m cleaning off their shells,” she replied.  “Anything on a turtle’s shell, like algae or scum, reduces the turtle’s ability to absorb heat and impedes its ability to swim.  It can also corrode and weaken the shell over time.”  “Wow!  That’s really nice of you!” I exclaimed.  She went on: “I spend a couple of hours each Sunday morning, relaxing by this lake and helping these little guys out.  It’s my own strange way of making a difference.”  “But don’t most freshwater turtles live their whole lives with algae and scum hanging from their shells?” I asked.  “Yep, sadly, they do,” she replied.  I scratched my head.  “Well then, don’t you think your time could be better spent?  I mean, I think your efforts are kind and all, but there are fresh water turtles living in lakes all around the world.  And 99% of these turtles don’t have kind people like you to help them clean off their shells.  So, no offense… but how exactly are your localized efforts here truly making a difference?”  The woman giggled aloud.  She then looked down at the turtle in her lap, scrubbed off the last piece of algae from its shell, and said, “Sweetie, if this little guy could talk, he’d tell you I just made all the difference in the world.” The Moral of the Story: Each one of us can change the world. Maybe we can’t change the world right away but a single good deed will resonate with the rest of the world. Make every day count by knowing that you are capable of so much good, you just need to be brave to make the world a better place!"},
+    {storytitle: "The Weight of the Glass", longstory: "Once upon a time, a psychology professor walked around on a stage while teaching stress management principles to an auditorium filled with students.  As she raised a glass of water, everyone expected they’d be asked the typical “glass half empty or glass half full” question.  Instead, with a smile on her face, the professor asked, “How heavy is this glass of water I’m holding?”  Students shouted out answers ranging from eight ounces to a couple of pounds.  She replied, “From my perspective, the absolute weight of this glass doesn’t matter.  It all depends on how long I hold it.  If I hold it for a minute or two, it’s fairly light.  If I hold it for an hour straight, its weight might make my arm ache a little.  If I hold it for a day straight, my arm will likely cramp up and feel completely numb and paralyzed, forcing me to drop the glass to the floor.  In each case, the weight of the glass doesn’t change, but the longer I hold it, the heavier it feels to me.”  As the class shook their heads in agreement, she continued, “Your stresses and worries in life are very much like this glass of water.  Think about them for a while and nothing happens.  Think about them a bit longer and you begin to ache a little.  Think about them all day long, and you will feel completely numb and paralyzed – incapable of doing anything else until you drop them.”  The Moral of the Story: On days when you’re stressed out and feeling overwhelmed, learn to embrace the inevitable and let go. Some things cannot be controlled and no amount of worrying could put all your burdens away. Instead of letting stress get to you, embrace it and conquer it. Let yesterday’s worries inspire you to a productive day."},
+    {storytitle: "The Butterfly Effect", longstory: "A man stood on the edge of a cliff, peering down at the raging river below. He was deep in thought, considering his options. He had lost his job, his wife had left him, and he had no money in the bank. He was desperate and hopeless.  Just then, a butterfly landed on his shoulder. The man looked at it and smiled. He had always loved butterflies, with their delicate beauty and intricate patterns. He reached out to touch the butterfly, but it took flight, soaring up into the sky.  The man watched it fly away, wondering where it would go and what it would do. And then, a thought struck him: what if that single butterfly had a profound impact on the world? What if, through its actions and movements, it caused a chain of events that changed the course of history?  The man laughed at the absurdity of his thought. But as he continued to ponder it, he realized that it was possible. Every action, no matter how small, has the potential to set off a chain of events that can change the world.  And so, the man made a decision. He would use his time and energy to do good in the world, to make a difference, no matter how small. He would be like that butterfly, flapping his wings and causing a chain of positive events to unfold.  The man walked away from the cliff, feeling lighter and more hopeful than he had in months. He didn’t know exactly how his actions would change the world, but he was determined to try. And who knows? Maybe one day, he would look back and realize that he was the one who caused a chain of events that led to a better world for all.  The Moral of the Story: Every action, no matter how small, has the potential to change the world. So let's be like the butterfly and make a positive impact every day!"},
+    {storytitle: "The Power of Words", longstory: "A man once walked into a bar and ordered a drink. As he waited for his drink, he overheard two men in the corner of the bar arguing. One man was yelling and using all sorts of foul language. The other man remained calm and spoke softly. The first man got angrier and angrier as the second man remained calm and collected. The man who had ordered the drink was so struck by the contrast between the two men that he decided to approach them. He asked the man who was yelling why he was so upset and angry. The man explained that he was having trouble with his business and that everything was going wrong. The man who ordered the drink then asked the second man what he thought about the situation. The second man replied, “I believe that words are powerful and I choose to use them wisely. When I speak, I want my words to be filled with positivity and hope, not anger and negativity.” The man who ordered the drink was so inspired by the second man’s response that he decided to change the way he spoke. From that day forward, he made a conscious effort to only use positive, uplifting words. And you know what? It worked! His life changed for the better and he found success in all areas of his life. The moral of the story is that the words we choose to use have the power to shape our lives and the lives of those around us. So choose your words wisely."},
+    {storytitle: "Shark Bait", longstory: "During a research experiment, a marine biologist placed a shark into a large holding tank and then released several small bait fish into the tank.  As you would expect, the shark quickly swam around the tank, attacked, and ate the smaller fish.  The marine biologist then inserted a strong piece of clear fiberglass into the tank, creating two separate partitions. She then put the shark on one side of the fiberglass and a new set of bait fish on the other.  Again, the shark quickly attacked.  This time, however, the shark slammed into the fiberglass divider and bounced off.  Undeterred, the shark kept repeating this behavior every few minutes to no avail.  Meanwhile, the baitfish swam around unharmed in the second partition.  Eventually, about an hour into the experiment, the shark gave up.  This experiment was repeated several dozen times over the next few weeks.  Each time, the shark got less aggressive and made fewer attempts to attack the baitfish, until eventually, the shark got tired of hitting the fiberglass divider and simply stopped attacking altogether.  The marine biologist then removed the fiberglass divider, but the shark did not attack.  The shark was trained to believe a barrier existed between it and the baitfish, so the bait fish swam wherever they wished, free from harm.  The Moral of the Story:  Most people tend to give up after facing a series of setbacks and failures. But do not let these setbacks keep you from trying again. Think of each setback as an opportunity to learn. Do not let the barriers that you set for yourself in your mind keep you from achieving your goals. Remember, nothing is impossible if you set your mind to it."},
+    ];
+    
+//  Random Facts
+    const facts = [
+    { fact: "The heart of a blue whale is so large that a human could swim through its arteries. It weighs as much as a car and pumps blood at a pressure 60 times greater than that of a human heart. The blue whale is the largest animal on Earth and its heart is proportionally the largest of any living creature, weighing in at an average of 600 pounds. This amazing organ beats just six times a minute when the whale is at the surface, but it slows down to just two beats per minute when the whale dives deeper."},
+    { fact: "Ostriches are the fastest runners of any bird, and can run at speeds of up to 45 miles per hour. They are also the largest birds on the planet, and can grow up to 9 feet tall and weigh as much as 330 pounds. Ostriches are native to Africa and are known for their powerful legs, which are covered in tough, scaly skin. They use these legs to defend themselves from predators, and can deliver a powerful kick that can kill a lion or other predator with one blow."},
+    { fact: "The Great Barrier Reef, located off the coast of Australia, is the largest coral reef system in the world and is home to thousands of different species of plants and animals. It is so large that it can be seen from space, and it is estimated to be between 10,000 and 20,000 years old. The reef is made up of millions of individual coral polyps, which are tiny animals that secrete a hard, calcium carbonate exoskeleton. The polyps form colonies, which over time grow into the massive reef system that we see today."},
+    { fact: "The human nose is capable of detecting over 1 trillion different scents. Our sense of smell is closely linked to our memory and emotions, which is why certain scents can trigger strong memories or emotions. The olfactory bulb, located in the brain, processes the information from our sense of smell and helps us identify scents. The sense of smell is also important for our sense of taste, as the majority of what we perceive as taste is actually aroma. ", },
+    { fact: "The shortest war in recorded history lasted only 38 minutes between Britain and Zanzibar on 27 August 1896. Zanzibar, an island off the coast of Tanzania, was a British protectorate at the time. The Sultan of Zanzibar died and was succeeded by Sultan Khalid bin Barghash. However, the British preferred Sultan Hamoud bin Mohammed, and when Khalid refused to stand down, they declared war and bombarded the palace, ending with Khalid's forced exile. ", },
+    { fact: "The Great Barrier Reef, located off the coast of Australia, is the largest living structure on Earth and can be seen from space. It is made up of over 2,900 individual reefs and 900 islands, spanning an area of over 344,000 square kilometers. The reef is home to a diverse array of marine life, including over 1,500 species of fish, as well as sea turtles, dolphins, and whales. The Great Barrier Reef is also an important breeding ground for many species of birds. ", },
+    { fact: "A rainbow is not actually a physical object, but instead is an optical illusion created by the reflection, refraction, and dispersion of light. Rainbows form when light from the sun passes through a raindrop, causing the light to separate into its different color components. The specific colors that make up a rainbow, in order, are red, orange, yellow, green, blue, indigo, and violet. The position of a rainbow in the sky is always in the opposite direction of the sun, with the observer in the middle. ", },
+    { fact: "The Eiffel Tower, located in Paris, France, was originally built as the entrance arch to the 1889 World's Fair. The tower was intended to demonstrate France's industrial prowess to the world and was initially considered by many to be an eyesore. The tower was almost torn down and scrapped after the exposition, but was saved because it was used as a radio tower. Today, it is one of the most recognizable landmarks in the world, attracting millions of visitors every year. ", },
+    { fact: "The human brain is capable of creating more connections than there are stars in the observable universe. These connections, known as neural connections or synapses, allow our brain to process and store information. The average brain has around 100 billion neurons, each capable of forming thousands of connections with other neurons. This ability to form connections and adapt is what allows us to learn, remember, and process information. ", },
+    { fact: "The Mona Lisa, painted by Leonardo da Vinci, is one of the most famous paintings in the world. It is a half-length portrait of a seated woman and is believed to be a portrait of Lisa Gherardini, the wife of Florentine merchant Francesco del Giocondo. The painting is famous for its enigmatic smile and the subtle play of light and shadows, which creates a sense of depth. The Mona Lisa has been on display at the Louvre Museum in Paris since 1797 and remains one of its most popular attractions. ", },
+    { fact: "The Great Wall of China is the longest wall in the world, stretching over 13,000 miles." },
+    { fact: "The human nose can detect over 1 trillion different scents." },
+    { fact: "The average person will spend six months of their life waiting for red lights to turn green." },
+    { fact: "There are more possible iterations of a game of chess than there are atoms in the observable universe." },
+    { fact: "The world's largest pyramid is not in Egypt, but in Mexico." },
+    { fact: "A group of flamingos is called a flamboyance." },
+    { fact: "The shortest war in history lasted only 38 minutes, between Britain and Zanzibar in 1896." },
+    { fact: "Banging your head against a wall burns 150 calories an hour." },
+    { fact: "The human brain contains more connections than there are stars in the Milky Way." },
+    { fact: "A sneeze travels out of your mouth at over 100 miles per hour." },
+    { fact: "The Great Barrier Reef is the largest coral reef system in the world." },
+    { fact: "The shortest war in history lasted only 38 minutes between Britain and Zanzibar on 27 August 1896." },
+    { fact: "The human nose can detect over 1 trillion different scents." },
+    { fact: "Cats have a unique way of grooming themselves with their rough tongues." },
+    { fact: "The Great Wall of China is not visible from space with the naked eye." },{ fact: "The Great Wall of China is one of the Seven Wonders of the Medieval World and is a symbol of Chinese civilization and ingenuity. It is a series of fortifications made of brick, tamped earth, stone, and other materials, and is over 13,000 miles long. Although it is often said that the Great Wall is visible from space, this is not true. In reality, it is only visible from low Earth orbit. Nevertheless, the Great Wall remains one of the most impressive architectural feats in human history." },
+    { fact: "The tallest mountain in the solar system is Olympus Mons, which is located on the planet Mars. It is over 22 kilometers high, which is nearly three times the height of Mount Everest. Olympus Mons is a shield volcano, which means that it was formed by many eruptions over a long period of time. The lack of tectonic activity on Mars has allowed this mountain to grow so tall without collapsing." },
+    { fact: "The average person will spend six months of their life waiting for red lights to turn green. This may seem like a long time, but it is a small price to pay for the safety and efficiency that traffic signals provide. Traffic signals have been in use for over a century, and have saved countless lives by helping to regulate the flow of vehicles on our roads." },
+    { fact: "Elephants are the largest land animals on Earth and have a unique set of characteristics that set them apart from other animals. They have the longest gestation period of any land animal, which is 22 months, and they have excellent memories and are capable of recognizing other elephants many years after they have last seen them. Elephants are also one of the few species that show signs of mourning for their dead, and they are often seen standing near the bones of their fallen herd members." },
+    { fact: "A group of flamingos is called a flamboyance. Flamingos are social birds that live in large groups, and they are known for their distinctive pink coloration, which comes from the pigments they obtain from their food. Flamingos feed by using their beaks to filter out small crustaceans and algae from the water, and they are capable of standing on one leg for long periods of time." },
+    { fact: "The shortest war in recorded history was between Britain and Zanzibar on 27 August 1896. It lasted only 38 minutes. Zanzibar was a Sultanate located on the East African coast, and it was a British protectorate at the time. When the Sultan died, Britain declared war to ensure that a pro-British ruler would take the throne. The naval bombardment was so effective that the new Sultan was installed without resistance, and the war was over before it had really even begun." },
+    { fact: "The oldest known sample of the smallpox virus was discovered in a 17th century grave in Lithuania in 1993. Smallpox was one of the most deadly diseases in human history, and it is estimated to have killed between 300 and 500 million people in the 20th century alone. In 1980, the World Health Organization declared that smallpox had been eradicated, making it the first disease to be eradicated by human effort." },
+    { fact: "The largest living organism on Earth is a fungus called Armillaria ostoyae. It covers over 2,200 acres in Oregon and is estimated to be over 2,400 years old. Fungi play an important role in breaking down dead organic matter and recycling nutrients in the ecosystem. Without fungi, the Earth's ecosystems would be much less diverse and productive." },
+
+    ];
+
+//  Random Songs
+    const songs = [
+    {songtitle: "Wake Me Up by Avicii", lyrics: "Feeling my way through the darkness Guided by a beating heart, I can’t tell where the journey will end, but I know where to start. They tell me I’m too young to understand. They say I’m caught up in a dream. Well, life will pass me by if I don’t open up my eyes. Well, that’s fine by me [2x]. So wake me up when it’s all over. When I’m wiser and I'm older All this time I was finding myself, and I didn’t know I was lost. I tried carrying the weight of the world, but I only have two hands. I hope I get the chance to travel the world, but I don’t have any plans. I wish I could stay here forever with this young man. not afraid to close my eyes Life’s a game made for everyone, and love is the prize [2x]. So wake me up when it’s all over when I’m wiser and older. All this time I was finding myself, and I didn’t know I was lost. I didn’t know I was lost. I didn’t know I was lost. I didn’t know I was lost. I didn’t know (didn’t know, didn’t know).", audio: "songs/wake_me_up_avicii.mp3"},
+    {songtitle: "Somebody Once Told Me", lyrics: "Somebody once told me The world is going to roll me. I ain't the sharpest tool in the shed. She was looking kind of dumb. With her finger and her thumb in the shape of an L on her forehead.  Well, the years start coming. And they don't stop coming. Fed to the rules, I hit the ground running. It didn't make sense not to live for fun. Your brain gets smart, but your head gets dumb.  So much to do, so much to see. So what's wrong with taking the back streets? You'll never know if you don't go. You'll never shine if you don't glow.  Hey now, you're an all-star. Get your game on and go play. Hey now, you're a rock star. Get the show on, get paid And all that glitters is gold. Only shooting stars break the mold.  It's a cool place, and they say it gets colder. You're bundled up now; wait 'til you get older. But the meteor men beg to differ. Judging by the hole in the satellite picture  The ice on which we skate is getting pretty thin. The water's getting warm, so you might as well swim. My world's on fire; how about yours? That's the way I like it, and I never get bored.  Hey now, you're an all-star. Get your game on and go play. Hey now, you're a rock star. Get the show on, get paid All that glitters is gold. Only shooting stars break the mold.  (Go for the moon, go, go.) (Go for the moon, go, go.) (Go for the moon.) (Go, go, go for the moon.)  Hey now, you're an all-star. Get your game on and go play. Hey now, you're a rock star. Get the show on, get paid And all that glitters is gold. Only shooting stars  Somebody once asked Could I spare some change for gas? I need to get myself away from this place. I said, Yep, what a concept! I could use a little fuel myself. And we could all use a little change.  Well, the years start coming. And they don't stop coming. Fed to the rules, I hit the ground running. It didn't make sense not to live for fun. Your brain gets smart, but your head gets dumb.  So much to do, so much to see. So what's wrong with taking the back streets? You'll never know if you don't go! You'll never shine if you don't glow.  Hey now, you're an all-star. Get your game on and go play. Hey now, you're a rock star. Get the show on, get paid  And all that glitters is gold. Only shooting stars break the mold. And all that glitters is gold. Only shooting stars break the mold.", audio: "songs/somebody_once_told_me.mp3"},
+    {songtitle: "In the End by Mellen Gi", lyrics: "It starts with one All I know It's so unreal Watch you go I tried so hard and got so far But in the end, it doesn't even matter I had to fall to lose it all But in the end, it doesn't even matter I tried so hard and got so far But in the end, it doesn't even matter I had to fall to lose it all But in the end, it doesn't even matter It starts with one All I know It's so unreal Watch you go I tried so hard and got so far But in the end, it doesn't even matter I had to fall to lose it all But in the end, it doesn't even matter I tried so hard and got so far But in the end, it doesn't even matter I had to fall to lose it all But in the end, it doesn't even matter", audio: "songs/i_tried_so_hard.mp3"},
+    {songtitle: "Faded by Alan Walker", lyrics: "You were the shadow to my light, did you feel us? Another star, you fade away Afraid our aim is out of sight, wanna see us Alight Where are you now? Where are you now? Where are you now? Was it all in my fantasy? Where are you now? Were you only imaginary? Where are you now? Atlantis Under the sea, under the sea Where are you now? Another dream The monster's running wild inside of me I'm faded I'm faded So lost, I'm faded I'm faded So lost, I'm faded These shallow waters never met what I needed I'm letting go, a deeper dive Eternal silence of the sea, I'm breathing Alive Where are you now? Where are you now? Under the bright but faded lights You set my heart on fire Where are you now? Where are you now? Where are you now? Atlantis Under the sea, under the sea Where are you now? Another dream The monster's running wild inside of me I'm faded I'm faded So lost, I'm faded I'm faded So lost, I'm faded", audio: "songs/faded_alan_walker.mp3"},
+    ];
+
+    poswordButton.addEventListener("click", () => {
+    const randomIndex = Math.floor(Math.random() * poswords.length);
+    const { posword, posdefinition } = poswords[randomIndex];
+
+    poswordButton.textContent = posword;
+    poswordDefinition.textContent = posdefinition;
+    });
+
+    negwordButton.addEventListener("click", () => {
+      const randomIndex = Math.floor(Math.random() * negwords.length);
+      const { negword, negdefinition } = negwords[randomIndex];
+
+      negwordButton.textContent = negword;
+      negwordDefinition.textContent = negdefinition;
+      });
+    
+    storyButton.addEventListener("click", () => {
+      const randomIndex = Math.floor(Math.random() * shortstories.length);
+      const { title, shortstory } = shortstories[randomIndex];
+
+      storyButton.textContent = title;
+      thestory.textContent = shortstory;
+      });
+    
+    longstoryButton.addEventListener("click", () => {
+      const randomIndex = Math.floor(Math.random() * longstories.length);
+      const { storytitle, longstory } = longstories[randomIndex];
+
+      longstoryButton.textContent = storytitle;
+      thelongstory.textContent = longstory;
+      });
+
+    factButton.addEventListener("click", function() {
+      let randomIndex = Math.floor(Math.random() * facts.length);
+      factDisplay.innerHTML = facts[randomIndex].fact;
+      });
+
+    function displaySong() {
+      let song = songs[Math.floor(Math.random() * songs.length)];
+      document.getElementById("songdisplay").innerHTML = song.lyrics;
+      document.getElementById("songbutton").innerHTML = "Playing: " + song.songtitle;
+      document.getElementById("audioPlayer").style.display = "block";
+      document.getElementById("audioPlayer").src = song.audio;
+      document.getElementById("audioPlayer").load();
+      }
+    // 
+
+    var showTimeButton = document.getElementById("show-time-button");
+    showTimeButton.addEventListener("click", function() {
+      document.getElementById("clock").style.display = "block";
+      startTime();
+      });
+
+    function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    m = checkTime(m);
+    document.getElementById("clock").innerHTML = h + ":" + m ;
+    var t = setTimeout(startTime, 500);
+    }
+
+    function checkTime(i) {
+    if (i < 10) {
+      i = "0" + i;
+    }
+    return i;
+    }
+
+//    Stopwatch
+      {
+    const stopwatch = document.getElementById("stopwatch");
+      const startBtn = document.getElementById("startBtn");
+      const stopBtn = document.getElementById("stopBtn");
+      const resetBtn = document.getElementById("resetBtn");
+
+      let time = 0;
+      let intervalId;
+
+      startBtn.addEventListener("click", function() {
+        intervalId = setInterval(function() {
+          time++;
+          const minutes = Math.floor(time / 60);
+          const seconds = time % 60;
+          const milliseconds = time % 100;
+          stopwatch.innerHTML = `${pad(minutes)}:${pad(seconds)}:${pad(
+            milliseconds
+          )}`;
+        }, 10);
+      })
+
+      stopBtn.addEventListener("click", function() {
+        clearInterval(intervalId);
+      });
+
+      resetBtn.addEventListener("click", function() {
+        clearInterval(intervalId);
+        time = 0;
+        stopwatch.innerHTML = "00:00:00";
+      });
+
+      function pad(number) {
+        if (number < 10) {
+          return "0" + number;
+        } else {
+          return number;
+        }
+      }
+      };
+//    Dino game
+      {
+      let dinoButton = document.getElementById("dino-game-button");
+      let gameContainer = document.getElementById("game-container");
+      dinoButton.addEventListener("click", function() {
+      gameContainer.style.display = "block";
+      });
+      }
+//    Calculator
+      {
+      const calculatorButton = document.querySelector("#calculator-button");
+      const calculator = document.querySelector("#calculator");
+      const expressionInput = document.querySelector("#expression");
+      const buttons = document.querySelectorAll("#calculator button");
+
+      calculatorButton.addEventListener("click", function() {
+      calculator.style.display = "block";
+      });
+
+      buttons.forEach(function(button) {
+      button.addEventListener("click", function() {
+      if (button.value === "C") {
+        expressionInput.value = "";
+      } else if (button.value === "=") {
+        expressionInput.value = eval(expressionInput.value);
+      } else {
+        expressionInput.value += button.value;
+      }
+      });
+      });
+      };
+</script>
+    <p style="color: rgb(227, 93, 93);">Disclaimer: This is for educational purposes only.</p>
+</body>
+</html>
