@@ -1,109 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script src="jquery/jquery-3.6.3.min.js"></script>
   <title>Button Button</title>
   <style>
     /* Add styles for header, navbar, sidebar, and footer here */
-    #clock {
-      font-size: 30px;
-      margin-left: 30px;
-      display: none;
-    }
+        #clock {
+        font-size: 30px;
+        margin-left: 30px;
+        display: none;
+        }
     
-    .abc {
+        .abc {
         font-size: 30px;
         margin-left: 15px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 30%;
+        }
+        th, td {
+            border: 1px solid black;
+            text-align: center;
+            padding: 8px;
+        }
+        th {
+            background-color: #dddddd;
+        }
+        .cal{
+            background: violet;
+            color: black;
+            font-size: large;
+            font-weight: bold;
+        }
+      .image-container {
+        display: none;
       }
   </style>
-</head>
-<body style="margin: 2%;">
-  <header>
-    <h1>Button Button</h1>
-  </header>
-  <nav>
-    <!-- Add navigation links here -->
-  </nav>
-  <aside>
-    <!-- Add sidebar content here -->
-  </aside>
-  <main>
-    <p>When you click on any button, it will show you the thing mentioned in the button. You can click most of the buttons multiple times.</p>
-
-    <button id="pos-word-button">Positive Word</button>
-    <p id="pos-word-definition"></p>
-
-    <button id="neg-word-button">Negative Word</button>
-    <p id="neg-word-definition"></p>
-
-    <button id="story-button">Short Story</button>
-    <p id="short-story"></p>
-
-    <button id="longstory-button">Long Story</button>
-    <p id="long-story"></p>
-
-    <button id="fact-Button">Random Fact</button>
-    <p id="fact-Display"></p>
-
-    <button id="songbutton" onclick="displaySong()">Random Song</button>
-    <br><br>
-    <audio id="audioPlayer" controls style="display: none;"></audio>    
-    <p id="songdisplay"></p>
-    
-    
-
-    <button id="startBtn">Start</button>
-    <button id="stopBtn">Stop</button>
-    <button id="resetBtn">Reset</button>
-    <div class="abc" id="stopwatch"></div>
-    <br>
-
-
-    <button id="show-time-button">Current Local Time</button>
-    <div id="clock"></div>
-    <br><br>
-
-    <button id="dino-game-button">Play Dino Game</button>
-<div id="game-container" style="display:none;">
-  <iframe style="height: 200px;" src="http://www.trex-game.skipser.com/" width="100%" height="500"></iframe>
-</div>
-<br><br>
-<button id="calculator-button">Calculator</button>
-
-<div id="calculator" style="display:none;">
-  <input type="text" id="expression" disabled />
-  <br />
-  <button value="1">1</button>
-  <button value="2">2</button>
-  <button value="3">3</button>
-  <button value="+">+</button>
-  <br />
-  <button value="4">4</button>
-  <button value="5">5</button>
-  <button value="6">6</button>
-  <button value="-">-</button>
-  <br />
-  <button value="7">7</button>
-  <button value="8">8</button>
-  <button value="9">9</button>
-  <button value="*">*</button>
-  <br/>
-  <button value="C">C</button>
-  <button value="0">0</button>
-  <button value="=">=</button>
-  <button value="/">/</button>
-</div>
-    <br><br>
-    <button id="click-counter">Click me!</button>
-    <p class="abc" id="counter-display"></p>
-
-  
-    
-
-  </main>
-  <footer>
-    <!-- Add footer content here -->
-  </footer>
   <script>
+    alert("Welcome to the Button Button Project! Click the buttons to see what they do and have fun exploring!");
+
+
     const poswordButton = document.getElementById("pos-word-button");
     const poswordDefinition = document.getElementById("pos-word-definition");
 
@@ -206,7 +143,6 @@
     { posword: "Friendship", posdefinition: "Friendship is a close relationship between two people based on mutual trust, support, and affection. It is a valuable aspect of life that brings joy and happiness." },
     { posword: "Freedom", posdefinition: "Freedom is the state of being free from constraints, restrictions, or control. It is a fundamental human right that allows individuals to make their own choices." },
     { posword: "Encouragement", posdefinition: "Encouragement is the act of giving support, confidence, and hope to someone. It is a powerful tool for helping others achieve their goals. #s.h.r" },
-    { posword: "Forgiveness", posdefinition: "Forgiveness is the act of letting go of resentment or anger towards someone who has wronged us. It is a crucial aspect of personal growth and healing." },
     { posword: "Generosity", posdefinition: "Generosity is the act of giving freely and unselfishly without expectation of return. It is a quality that enriches the lives of both the giver and the receiver." },
     { posword: "Optimism", posdefinition: "Optimism is a positive and hopeful outlook on life and the future. It is a state of mind that helps individuals persevere through difficulties." },
     { posword: "Creativity", posdefinition: "Creativity is the ability to generate new and original ideas. It is a valuable resource that allows individuals to express themselves and solve problems." },
@@ -230,6 +166,7 @@
     { posword: "Success", posdefinition: "Success is the achievement of one's goals or objectives. It is often defined and measured by an individual's personal standards and can include professional, financial, personal or spiritual accomplishments." },
     { posword: "Resilience", posdefinition: "Resilience is the ability to adapt and bounce back from adversity, trauma, or difficult experiences. It involves the ability to maintain hope and positivity in the face of challenges, and to use problem-solving skills and support systems to overcome obstacles."},
     { posword: "Spark", posdefinition: "A spark is a small but bright burst of light or energy that is often used as a symbol of inspiration, motivation or creativity"},
+    { posword: "Forgiveness", posdefinition: "Forgiveness is the act of letting go of resentment or anger towards someone who has wronged us. It is a crucial aspect of personal growth and healing." },
     { posword: "Support", posdefinition: "Support is the act of providing help, encouragement, or assistance to another person, often during difficult times or in pursuit of a shared goal."},
     { posword: "Spirit", posdefinition: "The spirit is a person's inner essence or character, often seen as the source of their motivations, desires, and ambitions."},
     { posword: "Simplicity", posdefinition: "Simplicity is the quality of being straightforward, uncluttered and easy to understand, often seen as a positive attribute in individuals and experiences."},
@@ -519,6 +456,7 @@
     {storytitle: "The Butterfly Effect", longstory: "A man stood on the edge of a cliff, peering down at the raging river below. He was deep in thought, considering his options. He had lost his job, his wife had left him, and he had no money in the bank. He was desperate and hopeless.  Just then, a butterfly landed on his shoulder. The man looked at it and smiled. He had always loved butterflies, with their delicate beauty and intricate patterns. He reached out to touch the butterfly, but it took flight, soaring up into the sky.  The man watched it fly away, wondering where it would go and what it would do. And then, a thought struck him: what if that single butterfly had a profound impact on the world? What if, through its actions and movements, it caused a chain of events that changed the course of history?  The man laughed at the absurdity of his thought. But as he continued to ponder it, he realized that it was possible. Every action, no matter how small, has the potential to set off a chain of events that can change the world.  And so, the man made a decision. He would use his time and energy to do good in the world, to make a difference, no matter how small. He would be like that butterfly, flapping his wings and causing a chain of positive events to unfold.  The man walked away from the cliff, feeling lighter and more hopeful than he had in months. He didn’t know exactly how his actions would change the world, but he was determined to try. And who knows? Maybe one day, he would look back and realize that he was the one who caused a chain of events that led to a better world for all.  The Moral of the Story: Every action, no matter how small, has the potential to change the world. So let's be like the butterfly and make a positive impact every day!"},
     {storytitle: "The Power of Words", longstory: "A man once walked into a bar and ordered a drink. As he waited for his drink, he overheard two men in the corner of the bar arguing. One man was yelling and using all sorts of foul language. The other man remained calm and spoke softly. The first man got angrier and angrier as the second man remained calm and collected. The man who had ordered the drink was so struck by the contrast between the two men that he decided to approach them. He asked the man who was yelling why he was so upset and angry. The man explained that he was having trouble with his business and that everything was going wrong. The man who ordered the drink then asked the second man what he thought about the situation. The second man replied, “I believe that words are powerful and I choose to use them wisely. When I speak, I want my words to be filled with positivity and hope, not anger and negativity.” The man who ordered the drink was so inspired by the second man’s response that he decided to change the way he spoke. From that day forward, he made a conscious effort to only use positive, uplifting words. And you know what? It worked! His life changed for the better and he found success in all areas of his life. The moral of the story is that the words we choose to use have the power to shape our lives and the lives of those around us. So choose your words wisely."},
     {storytitle: "Shark Bait", longstory: "During a research experiment, a marine biologist placed a shark into a large holding tank and then released several small bait fish into the tank.  As you would expect, the shark quickly swam around the tank, attacked, and ate the smaller fish.  The marine biologist then inserted a strong piece of clear fiberglass into the tank, creating two separate partitions. She then put the shark on one side of the fiberglass and a new set of bait fish on the other.  Again, the shark quickly attacked.  This time, however, the shark slammed into the fiberglass divider and bounced off.  Undeterred, the shark kept repeating this behavior every few minutes to no avail.  Meanwhile, the baitfish swam around unharmed in the second partition.  Eventually, about an hour into the experiment, the shark gave up.  This experiment was repeated several dozen times over the next few weeks.  Each time, the shark got less aggressive and made fewer attempts to attack the baitfish, until eventually, the shark got tired of hitting the fiberglass divider and simply stopped attacking altogether.  The marine biologist then removed the fiberglass divider, but the shark did not attack.  The shark was trained to believe a barrier existed between it and the baitfish, so the bait fish swam wherever they wished, free from harm.  The Moral of the Story:  Most people tend to give up after facing a series of setbacks and failures. But do not let these setbacks keep you from trying again. Think of each setback as an opportunity to learn. Do not let the barriers that you set for yourself in your mind keep you from achieving your goals. Remember, nothing is impossible if you set your mind to it."},
+    {storytitle: "Scent of Love", longstory: "Once upon a time, in a bustling city, there lived a young man named Jake. He was an artist by heart, and had a keen sense of smell. He would often spend his time at the mall, wandering around and taking in the different scents that surrounded him. He had a particular love for a perfume that he had come across in a high-end department store, the aroma of which was like nothing he had ever smelled before. It was intoxicating, and he couldn't get enough of it. However, there was one problem - the perfume was incredibly expensive. Jake knew that he could never afford to buy it for himself, so he would often sneak into the store and put it on when he had the chance.  One day, while Jake was at the mall, he met a beautiful girl named Isabella. She was rich, elegant, and had a great sense of style. Jake was immediately smitten and couldn't help but stare at her as they passed by each other. Little did he know that Isabella was also a fan of the same perfume that he loved.  They both continued to frequent the mall, and their paths would often cross. They would always smile and wave at each other, but they never had the chance to talk. Jake was too shy to approach her, and Isabella was always busy with her shopping.  As their relationship blossomed, Jake and Isabella would often go on adventures together, exploring the city and trying out new places. They were both from completely different worlds, Jake was an artist and Isabella was from a very wealthy family, but they found that they had so much in common. They both loved to travel and try new things and they were both very adventurous.  One day, while they were out exploring the city, they stumbled upon an old, run-down perfume factory. Intrigued, they decided to go inside and take a look around. Inside, they found that the factory was still in operation, and they were welcomed by the owner who was an old perfumer. He was delighted to see that they were interested in his perfumes and gave them a tour of the factory. Jake and Isabella were fascinated by the process of making perfumes and the old perfumer showed them how to make their own unique scent.  As they were leaving the factory, Jake and Isabella decided to give their new perfume a try. They both put it on, and as soon as they did, they felt a spark. The perfume had become a symbol of their love, and from that day on, they would always wear it together.  With time, their families got to know each other, and they all became close. Jake's family was overjoyed to see him so happy, and Isabella's family was impressed with Jake's artistic talent. They both had different backgrounds and cultures, but they all found that they had a lot in common and they all got along very well.  As their relationship continued to grow, Jake and Isabella knew that they were meant to be together. They had overcome all of the obstacles and differences that they had faced and they had found true love. They knew that they would always be there for each other, no matter what.  In the end, Jake and Isabella lived happily ever after, and their families were forever united. They would often look back on the day they met at the mall and the love that had blossomed from it. They knew that it was fate that brought them together, and they were grateful for every moment they shared. And the perfume that they had made together, would always remind them of the love they shared and the adventures they went on together."},
     ];
     
 //  Random Facts
@@ -559,49 +497,13 @@
     ];
 
 //  Random Songs
+    {
     const songs = [
     {songtitle: "Wake Me Up by Avicii", lyrics: "Feeling my way through the darkness Guided by a beating heart, I can’t tell where the journey will end, but I know where to start. They tell me I’m too young to understand. They say I’m caught up in a dream. Well, life will pass me by if I don’t open up my eyes. Well, that’s fine by me [2x]. So wake me up when it’s all over. When I’m wiser and I'm older All this time I was finding myself, and I didn’t know I was lost. I tried carrying the weight of the world, but I only have two hands. I hope I get the chance to travel the world, but I don’t have any plans. I wish I could stay here forever with this young man. not afraid to close my eyes Life’s a game made for everyone, and love is the prize [2x]. So wake me up when it’s all over when I’m wiser and older. All this time I was finding myself, and I didn’t know I was lost. I didn’t know I was lost. I didn’t know I was lost. I didn’t know I was lost. I didn’t know (didn’t know, didn’t know).", audio: "songs/wake_me_up_avicii.mp3"},
     {songtitle: "Somebody Once Told Me", lyrics: "Somebody once told me The world is going to roll me. I ain't the sharpest tool in the shed. She was looking kind of dumb. With her finger and her thumb in the shape of an L on her forehead.  Well, the years start coming. And they don't stop coming. Fed to the rules, I hit the ground running. It didn't make sense not to live for fun. Your brain gets smart, but your head gets dumb.  So much to do, so much to see. So what's wrong with taking the back streets? You'll never know if you don't go. You'll never shine if you don't glow.  Hey now, you're an all-star. Get your game on and go play. Hey now, you're a rock star. Get the show on, get paid And all that glitters is gold. Only shooting stars break the mold.  It's a cool place, and they say it gets colder. You're bundled up now; wait 'til you get older. But the meteor men beg to differ. Judging by the hole in the satellite picture  The ice on which we skate is getting pretty thin. The water's getting warm, so you might as well swim. My world's on fire; how about yours? That's the way I like it, and I never get bored.  Hey now, you're an all-star. Get your game on and go play. Hey now, you're a rock star. Get the show on, get paid All that glitters is gold. Only shooting stars break the mold.  (Go for the moon, go, go.) (Go for the moon, go, go.) (Go for the moon.) (Go, go, go for the moon.)  Hey now, you're an all-star. Get your game on and go play. Hey now, you're a rock star. Get the show on, get paid And all that glitters is gold. Only shooting stars  Somebody once asked Could I spare some change for gas? I need to get myself away from this place. I said, Yep, what a concept! I could use a little fuel myself. And we could all use a little change.  Well, the years start coming. And they don't stop coming. Fed to the rules, I hit the ground running. It didn't make sense not to live for fun. Your brain gets smart, but your head gets dumb.  So much to do, so much to see. So what's wrong with taking the back streets? You'll never know if you don't go! You'll never shine if you don't glow.  Hey now, you're an all-star. Get your game on and go play. Hey now, you're a rock star. Get the show on, get paid  And all that glitters is gold. Only shooting stars break the mold. And all that glitters is gold. Only shooting stars break the mold.", audio: "songs/somebody_once_told_me.mp3"},
     {songtitle: "In the End by Mellen Gi", lyrics: "It starts with one All I know It's so unreal Watch you go I tried so hard and got so far But in the end, it doesn't even matter I had to fall to lose it all But in the end, it doesn't even matter I tried so hard and got so far But in the end, it doesn't even matter I had to fall to lose it all But in the end, it doesn't even matter It starts with one All I know It's so unreal Watch you go I tried so hard and got so far But in the end, it doesn't even matter I had to fall to lose it all But in the end, it doesn't even matter I tried so hard and got so far But in the end, it doesn't even matter I had to fall to lose it all But in the end, it doesn't even matter", audio: "songs/i_tried_so_hard.mp3"},
     {songtitle: "Faded by Alan Walker", lyrics: "You were the shadow to my light, did you feel us? Another star, you fade away Afraid our aim is out of sight, wanna see us Alight Where are you now? Where are you now? Where are you now? Was it all in my fantasy? Where are you now? Were you only imaginary? Where are you now? Atlantis Under the sea, under the sea Where are you now? Another dream The monster's running wild inside of me I'm faded I'm faded So lost, I'm faded I'm faded So lost, I'm faded These shallow waters never met what I needed I'm letting go, a deeper dive Eternal silence of the sea, I'm breathing Alive Where are you now? Where are you now? Under the bright but faded lights You set my heart on fire Where are you now? Where are you now? Where are you now? Atlantis Under the sea, under the sea Where are you now? Another dream The monster's running wild inside of me I'm faded I'm faded So lost, I'm faded I'm faded So lost, I'm faded", audio: "songs/faded_alan_walker.mp3"},
     ];
-
-    poswordButton.addEventListener("click", () => {
-    const randomIndex = Math.floor(Math.random() * poswords.length);
-    const { posword, posdefinition } = poswords[randomIndex];
-
-    poswordButton.textContent = posword;
-    poswordDefinition.textContent = posdefinition;
-    });
-
-    negwordButton.addEventListener("click", () => {
-      const randomIndex = Math.floor(Math.random() * negwords.length);
-      const { negword, negdefinition } = negwords[randomIndex];
-
-      negwordButton.textContent = negword;
-      negwordDefinition.textContent = negdefinition;
-      });
-    
-    storyButton.addEventListener("click", () => {
-      const randomIndex = Math.floor(Math.random() * shortstories.length);
-      const { title, shortstory } = shortstories[randomIndex];
-
-      storyButton.textContent = title;
-      thestory.textContent = shortstory;
-      });
-    
-    longstoryButton.addEventListener("click", () => {
-      const randomIndex = Math.floor(Math.random() * longstories.length);
-      const { storytitle, longstory } = longstories[randomIndex];
-
-      longstoryButton.textContent = storytitle;
-      thelongstory.textContent = longstory;
-      });
-
-    factButton.addEventListener("click", function() {
-      let randomIndex = Math.floor(Math.random() * facts.length);
-      factDisplay.innerHTML = facts[randomIndex].fact;
-      });
 
     function displaySong() {
       let song = songs[Math.floor(Math.random() * songs.length)];
@@ -611,14 +513,57 @@
       document.getElementById("audioPlayer").src = song.audio;
       document.getElementById("audioPlayer").load();
       }
-    // 
+    }
+    
+//  Positive Word
+    poswordButton.addEventListener("click", () => {
+    const randomIndex = Math.floor(Math.random() * poswords.length);
+    const { posword, posdefinition } = poswords[randomIndex];
 
+    poswordButton.textContent = posword;
+    poswordDefinition.textContent = posdefinition;
+    });
+
+//  Negative Word
+    negwordButton.addEventListener("click", () => {
+      const randomIndex = Math.floor(Math.random() * negwords.length);
+      const { negword, negdefinition } = negwords[randomIndex];
+
+      negwordButton.textContent = negword;
+      negwordDefinition.textContent = negdefinition;
+      });
+    
+//  Short Story
+    storyButton.addEventListener("click", () => {
+      const randomIndex = Math.floor(Math.random() * shortstories.length);
+      const { title, shortstory } = shortstories[randomIndex];
+
+      storyButton.textContent = title;
+      thestory.textContent = shortstory;
+      });
+    
+//  Long Story
+    longstoryButton.addEventListener("click", () => {
+      const randomIndex = Math.floor(Math.random() * longstories.length);
+      const { storytitle, longstory } = longstories[randomIndex];
+
+      longstoryButton.textContent = storytitle;
+      thelongstory.textContent = longstory;
+      });
+
+//  Random Fact
+    factButton.addEventListener("click", function() {
+      let randomIndex = Math.floor(Math.random() * facts.length);
+      factDisplay.innerHTML = facts[randomIndex].fact;
+      });
+
+//  Digital Clock
+    {
     var showTimeButton = document.getElementById("show-time-button");
     showTimeButton.addEventListener("click", function() {
       document.getElementById("clock").style.display = "block";
       startTime();
       });
-
     function startTime() {
     var today = new Date();
     var h = today.getHours();
@@ -633,6 +578,7 @@
       i = "0" + i;
     }
     return i;
+    }
     }
 
 //    Stopwatch
@@ -693,7 +639,7 @@
       calculatorButton.addEventListener("click", function() {
       calculator.style.display = "block";
       });
-
+      
       buttons.forEach(function(button) {
       button.addEventListener("click", function() {
       if (button.value === "C") {
@@ -706,7 +652,466 @@
       });
       });
       };
+      
+//    calendar
+      {
+      const calendarBtn = document.querySelector("#calendar-btn");
+      const calendar = document.querySelector("#calendar");
+      calendarBtn.addEventListener("click", function() {if (calendar.style.display === "none") {
+      calendar.style.display = "table";
+      } else {
+      calendar.style.display = "none";
+      }
+      });
+      }
+
+//    converter
+      {
+      function convert() {
+          var amount = document.getElementById("amount").value;
+          var from = document.getElementById("from").value;
+          var to = document.getElementById("to").value;
+          var result;
+      if (from == "USD" && to == "PKR") {
+        result = amount * 276;
+      } else if (from == "PKR" && to == "USD") {
+        result = amount / 276;
+      } else if (from == "USD" && to == "USD") {
+        result = amount * 1;
+      } else if (from == "PKR" && to == "PKR") {
+        result = amount * 1;
+      } else if (from == "FT" && to == "M") {
+        result = amount * 0.3048;
+      } else if (from == "M" && to == "FT") {
+        result = amount / 0.3048;
+      } else if (from == "FT" && to == "FT") {
+        result = amount * 1;
+      } else if (from == "M" && to == "M") {
+        result = amount * 1;
+      }
+      
+      document.getElementById("result").innerHTML = result;
+      }
+    
+      document.getElementById("showConverter").addEventListener("click", function() {
+      var converter = document.getElementById("converter");
+      if (converter.style.display === "none") {
+      converter.style.display = "block";
+      } else {
+      converter.style.display = "none";
+      }
+      });
+      }
+
+//    random image
+      {
+      const btn = $("#random-image-btn");
+      const container = $(".image-container");
+      const image = $("#random-image");
+      
+      const natureImages = [
+        "https://picsum.photos/200/300?nature=1",
+        "https://picsum.photos/200/300?nature=2",
+        "https://picsum.photos/200/300?nature=3",
+        "https://picsum.photos/200/300?nature=4",
+        "https://picsum.photos/200/300?nature=5",
+        "https://picsum.photos/200/300?nature=6",
+        "https://picsum.photos/200/300?nature=7",
+        "https://picsum.photos/200/300?nature=8",
+        "https://picsum.photos/200/300?nature=9",
+        "https://picsum.photos/200/300?nature=10",
+        // Add more nature images here
+      ];
+      
+      const animalsImages = [
+        "https://picsum.photos/200/300?animals=1",
+        "https://picsum.photos/200/300?animals=2",
+        "https://picsum.photos/200/300?animals=3",
+        "https://picsum.photos/200/300?animals=4",
+        "https://picsum.photos/200/300?animals=5",
+        "https://picsum.photos/200/300?animals=6",
+        "https://picsum.photos/200/300?animals=7",
+        "https://picsum.photos/200/300?animals=8",
+        "https://picsum.photos/200/300?animals=9",
+        "https://picsum.photos/200/300?animals=10",
+        // Add more animals images here
+      ];
+      
+      const spaceImages = [
+        "https://picsum.photos/200/300?space=1",
+        "https://picsum.photos/200/300?space=2",
+        "https://picsum.photos/200/300?space=3",
+        "https://picsum.photos/200/300?space=4",
+        "https://picsum.photos/200/300?space=5",
+        "https://picsum.photos/200/300?space=6",
+        "https://picsum.photos/200/300?space=7",
+        "https://picsum.photos/200/300?space=8",
+        "https://picsum.photos/200/300?space=9",
+        "https://picsum.photos/200/300?space=10",
+        // Add more space images here
+      ];
+      btn.click(function() {
+        container.show();
+        // Randomly select one of the categories
+        const randomCategory = Math.floor(Math.random() * 3);
+        let categoryImages;
+        switch (randomCategory) {
+          case 0:
+            categoryImages = natureImages;
+            break;
+          case 1:
+            categoryImages = animalsImages;
+            break;
+          case 2:
+            categoryImages = spaceImages;
+            break;
+        }
+        // Randomly select an image from the selected category
+        const randomIndex = Math.floor(Math.random() * categoryImages.length);
+        image.attr("src", categoryImages[randomIndex]);
+      });
+      }
+
+//    Random joke
+      {
+      const jokeBtn = document.getElementById("jokeBtn");
+      const jokeContainer = document.getElementById("jokeContainer");
+
+      const jokes = [
+      "Why did the tomato turn red? Because it saw the salad dressing!",
+      "Why did the scarecrow win an award? Because he was outstanding in his field!",
+      "Why don't scientists trust atoms? Because they make up everything!",
+      "Why did the cookie go to the doctor? Because it felt crumbly!",
+      "Why did the bicycle fall over? Because it was two-tired!","Why did the chicken cross the playground? To get to the other slide.",
+      "Why couldn't the bicycle stand up by itself? Because it was two-tired.",
+      "Why did the frog call his insurance company? He had a jump in his car.",
+      "Why did the hipster burn his tongue? He drank his coffee before it was cool.",
+      "Why did the math book look so sad? Because it had too many problems.",
+      "Why was the computer cold? Because it left its Windows open.",
+      "Why did the onion start to cry? Because it was feeling a little cut up.",
+      "Why did the cheese stand alone? Because it was two curd.",
+      "Why did the koala fall out of the tree? It was asleep on the branch.",
+      "Why did the coffee file a police report? It got mugged.",
+      "Why did the sheep go to the party? Because it was a baaaad idea.",
+      "Why did the cookie go to the therapist? Because it was feeling crumbly.",
+      "Why did the baker go to art school? To learn how to decorate tarts.",
+      "Why did the tennis player bring string to the match? So they could tie the score.",
+      "Why did the tomato turn red? Because it saw the salad dressing!",
+      "Why did the scarecrow win an award? Because he was outstanding in his field!",
+      "Why don't scientists trust atoms? Because they make up everything!",
+      "Why did the cookie go to the doctor? Because it felt crumbly!",
+      "Why did the bicycle fall over? Because it was two-tired!",
+      "Why did the moon go to the doctor? It was feeling a little down.",
+      "Why did the dog go to the vet? He was feeling paw-some!",
+      "Why did the fish go to school? To get a good schools of education.",
+      "Why did the lemon go to the bar? To get a sour drink.",
+      "Why did the elephant go to the pool? To get a trunk full of water.",
+      "Why did the bird go to the doctor? Because it was feeling tweetment.",
+      "Why did the bird go to the doctor? It was feeling a little flighty.",
+      "Why did the bee go to the doctor? It was feeling a little stingy.",
+      "Why did the dinosaur go to the doctor? Because it was feeling a little steg-awesome.",
+      "Why did the dinosaur go to the doctor? It had a bad case of the dino-flu.",
+      "Why did the bear go to the doctor? It was feeling a little grizzly.",
+      
+      
+      ];
+
+      jokeBtn.addEventListener("click", function() {
+      const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
+      jokeContainer.innerHTML = randomJoke;
+      });
+      }
+
+//    Random Quote
+      {
+      const quoteBtn = document.getElementById("quoteBtn");
+      const quoteContainer = document.getElementById("quoteContainer");
+
+      const quotes = [
+      "Believe you can and you're halfway there.",
+      "Don't watch the clock; do what it does. Keep going.",
+      "The only way to do great work is to love what you do.",
+      "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+      "Success is not how high you have climbed, but how you make a positive difference to the world.",
+      "Be the change you wish to see in the world.",
+      "The future belongs to those who believe in the beauty of their dreams.",
+      "Don't watch the clock; do what it does. Keep going.",
+      "Believe in yourself and all that you are. Know that there is something inside you that is greater than any obstacle.",
+      "Happiness is not something ready made. It comes from your own actions.",
+      "It does not matter how slowly you go as long as you do not stop.",
+      "The only way to do great work is to love what you do.",
+      "Life is 10% what happens to us and 90% how we react to it.",
+      "The best way to predict the future is to create it.",
+      "Success is not the key to happiness. Happiness is the key to success.",
+      "Successful and unsuccessful people do not vary greatly in their abilities. They vary in their desires to reach their potential.",
+      "If you want to live a happy life, tie it to a goal, not to people or things.",
+      "Knowledge speaks, but wisdom listens.",
+      "The secret of getting ahead is getting started.",
+      "The only limit to our realization of tomorrow will be our doubts of today.",
+      "The only way to do great work is to love what you do. If you haven't found it yet, keep looking.",
+      "The greatest glory in living lies not in never falling, but in rising every time we fall.",
+      "Happiness is not something you postpone for the future; it is something you design for the present.",
+      "To handle yourself, use your head; to handle others, use your heart.",
+      "Believe you can and you're halfway there.",
+      "Be the reason someone smiles today.",
+      "A goal is a dream with a deadline.",
+      "The only thing standing between you and your goal is the story you keep telling yourself that you can't achieve it.",
+      "Successful people do what unsuccessful people are not willing to do. Don't wish it were easier; wish you were better.",
+      "The difference between ordinary and extraordinary is that little extra.",
+      "Successful people are not gifted; they just work hard, then succeed on purpose.",
+      "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+      "Your time is limited, don't waste it living someone else's life.",
+      "The only way to do great work is to love what you do. If you haven't found it yet, keep looking."
+      ];
+
+      quoteBtn.addEventListener("click", function() {
+      const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+      quoteContainer.innerHTML = randomQuote;
+      });
+      }
+      
+      
+//    Mathematics
+      {
+      function generateProblem() {
+        let num1 = Math.floor(Math.random() * 10 + 10);
+        let num2 = Math.floor(Math.random() * 10 + 10);
+        let operator = Math.floor(Math.random() * 3);
+        let problem;
+        let answer;
+    if (operator === 0) {
+      problem = num1 + " + " + num2;
+      answer = num1 + num2;
+    } else if (operator === 1) {
+      problem = num1 + " x " + num2;
+      answer = num1 * num2;
+      if (answer > 200) {
+        generateProblem();
+        return;
+      }
+    } else {
+      while (num1 % num2 !== 0) {
+        num1 = Math.floor(Math.random() * 10 + 1);
+        num2 = Math.floor(Math.random() * 10 + 1);
+      }
+      problem = num1 + " / " + num2;
+      answer = num1 / num2;
+    }
+
+    document.getElementById("problem").innerHTML = problem;
+    document.getElementById("answer").innerHTML = answer;
+    document.getElementById("show-answer").style.display = "block";
+    document.getElementById("answer").style.display = "none";
+    document.getElementById("showAnswer").style.display = "block";
+  }
+
+      function showAnswer() {
+      document.getElementById("answer").style.display = "block";
+      document.getElementById("showAnswer").style.display = "none";
+      }
+      }
+
 </script>
-    <p style="color: rgb(227, 93, 93);">Disclaimer: This is for educational purposes only.</p>
+</head>
+<body style="margin: 2%;">
+  <header>
+    <h1>Button Button</h1>
+  </header>
+  <nav>
+    <!-- Add navigation links here -->
+  </nav>
+  <aside>
+    <!-- Add sidebar content here -->
+  </aside>
+  <main>
+    <p>When you click on any button, it will show you the thing mentioned in the button. You can click most of the buttons multiple times.</p>
+
+    <button id="pos-word-button">Positive Word</button>
+    <p id="pos-word-definition"></p>
+
+    <button id="neg-word-button">Negative Word</button>
+    <p id="neg-word-definition"></p>
+
+    <button id="story-button">Short Story</button>
+    <p id="short-story"></p>
+
+    <button id="longstory-button">Long Story</button>
+    <p id="long-story"></p>
+
+    <button id="fact-Button">Random Fact</button>
+    <p id="fact-Display"></p>
+   
+   <button id="jokeBtn">Random Joke </button>
+   <div id="jokeContainer"></div>
+   <br>
+
+   <button id="quoteBtn"> Random Quote </button>
+   <div id="quoteContainer"></div>
+   <br>
+
+    <button id="songbutton" onclick="displaySong()">Random Song</button>
+    <audio id="audioPlayer" controls style="display: none;"></audio>    
+    <p id="songdisplay"></p>
+    
+   <button id="random-image-btn">Random Image</button>
+   <div class="image-container">
+     <img id="random-image" src="">
+   </div>
+   <br><br>
+    
+    <button id="startBtn">Start</button>
+    <button id="stopBtn">Stop</button>
+    <button id="resetBtn">Reset</button>
+    <div class="abc" id="stopwatch"></div>
+    <br>
+
+    <button id="show-time-button">Current Local Time</button>
+    <div id="clock"></div>
+    <br><br>
+
+    <button id="dino-game-button">Play Dino Game</button>
+    <div id="game-container" style="display:none;">
+    <iframe style="height: 200px;" src="http://www.trex-game.skipser.com/" width="100%"></iframe>
+    </div>
+    
+<!-- Math -->
+
+    <p>
+    <button onclick="generateProblem()">Arithmetic Challenge</button>
+    </p>
+    <p id="problem"></p>
+    <p id="answer" style="display: none;"></p>
+    <p id="show-answer" style="display: none;">
+    <button id="showAnswer" onclick="showAnswer()">Show Answer</button>
+    </p>
+
+    <button id="calculator-button">Calculator</button>
+    <div id="calculator" style="display:none;">
+  <input type="text" id="expression" disabled />
+  <br />
+  <button value="1">1</button>
+  <button value="2">2</button>
+  <button value="3">3</button>
+  <button value="+">+</button>
+  <br />
+  <button value="4">4</button>
+  <button value="5">5</button>
+  <button value="6">6</button>
+  <button value="-">-</button>
+  <br />
+  <button value="7">7</button>
+  <button value="8">8</button>
+  <button value="9">9</button>
+  <button value="*">*</button>
+  <br/>
+  <button value="C">C</button>
+  <button value="0">0</button>
+  <button value="=">=</button>
+  <button value="/">/</button>
+    </div>
+    <br><br>
+
+   <button id="calendar-btn">Calendar</button>
+   <table id="calendar" style="display:none;">
+    <tr>
+        <th colspan="7">February 2023</th>
+    </tr>
+    <tr>
+        <th>Sun</th>
+        <th>Mon</th>
+        <th>Tue</th>
+        <th>Wed</th>
+        <th>Thu</th>
+        <th>Fri</th>
+        <th>Sat</th>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>12</td>
+        <td>13</td>
+        <td>14</td>
+        <td>15</td>
+        <td>16</td>
+        <td>17</td>
+        <td>18</td>
+    </tr>
+    <tr>
+        <td>19</td>
+        <td>20</td>
+        <td>21</td>
+        <td>22</td>
+        <td>23</td>
+        <td>24</td>
+        <td>25</td>
+    </tr>
+    <tr>
+        <td>26</td>
+        <td>27</td>
+        <td>28</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+       <td colspan="7" class="cal">
+        “Forgiveness is the fragrance that the violet
+        <br> sheds on the heel that has crushed it.”
+        <br>  ― Mark Twain
+         <!-- میں جو سر بہ سجدہ ہوا کبھی تو زمیں سے آنے لگی صدا 
+        <br>ترا دل تو ہے صنم آشنا تجھے کیا ملے گا نماز میں -->
+    </td> 
+    </tr>
+   </table>
+   <br><br>
+   <button id="showConverter">Converter</button>
+   <div id="converter" style="display: none;">
+     <p> This is a basic converter with options to convert between USD and PKR, as well as between feet(FT) and meters(M). </p>
+     <input type="text" id="amount">
+     <select id="from">
+       <option value="USD">USD</option>
+       <option value="PKR">PKR</option>
+       <option value="FT">FT</option>
+       <option value="M">M</option>
+     </select>
+     <select id="to">
+       <option value="USD">USD</option>
+       <option value="PKR">PKR</option>
+       <option value="FT">FT</option>
+       <option value="M">M</option>
+     </select>
+     <button onclick="convert()">Convert</button>
+     <p id="result"></p>
+   </div>
+    <br><br>
+
+    <button id="click-counter">Click me!</button>
+    <p class="abc" id="counter-display"></p>
+
+  
+    
+
+  </main>
+<footer>    
+      <p style="text-align: center;">Project made with the great help of ChatGPT from <a href="https://openai.com">OpenAI</a><br></p>
+      <p style="text-align: center; color: rgb(227, 93, 93);">Disclaimer: This is for educational purposes only.</p>
+</footer>
 </body>
 </html>
