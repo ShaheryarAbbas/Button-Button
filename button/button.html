@@ -4,7 +4,9 @@
   <script src="jquery/jquery-3.6.3.min.js"></script>
   <title>Button Button</title>
   <style>
-    /* Add styles for header, navbar, sidebar, and footer here */
+        button{
+          cursor: pointer;
+        }
         #clock {
         font-size: 30px;
         margin-left: 30px;
@@ -36,9 +38,267 @@
       .image-container {
         display: none;
       }
+     .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0,0.4);
+      }
+      .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      }
+      .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      }
+      .close:hover,
+      .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+      }
+
   </style>
+</head>
+<body style="margin: 2%;">
+  <header>
+    <h1>Button Button</h1>
+  </header>
+  <nav>
+    <!-- Add navigation links here -->
+  </nav>
+  <aside>
+    <!-- Add sidebar content here -->
+  </aside>
+  <main>
+    <p>When you click on any button, it will show you the thing mentioned in the button. You can click most of the buttons multiple times.</p>
+    
+    <!-- Purpose for the poject -->
+    <div id="myModal" class="modal">
+    <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>I made this project to say sorry to my favorite teacher. This is my way of apologizing to them. I hope I will be forgiven and granted another chance</p>
+    </div>
+    </div>
+    <button id="myBtn">Purpose</button>
+    <br><br>
+
+    <button id="pos-word-button">Positive Word</button>
+    <p id="pos-word-definition"></p>
+
+    <button id="neg-word-button">Negative Word</button>
+    <p id="neg-word-definition"></p>
+
+    <button id="story-button">Short Story</button>
+    <p id="short-story"></p>
+
+    <button id="longstory-button">Long Story</button>
+    <p id="long-story"></p>
+
+    <button id="fact-Button">Random Fact</button>
+    <p id="fact-Display"></p>
+   
+   <button id="jokeBtn">Random Joke </button>
+   <div id="jokeContainer"></div>
+   <br>
+
+   <button id="quoteBtn"> Random Quote </button>
+   <div id="quoteContainer"></div>
+   <br>
+
+    <button id="songbutton" onclick="displaySong()">Random Song</button>
+    <audio id="audioPlayer" controls style="display: none;"></audio>    
+    <p id="songdisplay"></p>
+    
+   <button id="random-image-btn">Random Image</button>
+   <div class="image-container">
+     <img id="random-image" src="">
+   </div>
+   <br><br>
+    
+    <button id="startBtn">Start</button>
+    <button id="stopBtn">Stop</button>
+    <button id="resetBtn">Reset</button>
+    <div class="abc" id="stopwatch"></div>
+    <br>
+
+    <button id="show-time-button">Current Local Time</button>
+    <div id="clock"></div>
+    <br><br>
+
+    <button id="dino-game-button">Play Dino Game</button>
+    <div id="game-container" style="display:none;">
+    <iframe style="height: 200px;" src="http://www.trex-game.skipser.com/" width="100%"></iframe>
+    </div>
+    
+<!-- Math button-->
+
+    <p>
+    <button onclick="generateProblem()">Arithmetic Challenge</button>
+    </p>
+    <p id="problem"></p>
+    <p id="answer" style="display: none;"></p>
+    <p id="show-answer" style="display: none;">
+    <button id="showAnswer" onclick="showAnswer()">Show Answer</button>
+    </p>
+
+    <button id="calculator-button">Calculator</button>
+    <div id="calculator" style="display:none;">
+  <input type="text" id="expression" disabled />
+  <br />
+  <button value="1">1</button>
+  <button value="2">2</button>
+  <button value="3">3</button>
+  <button value="+">+</button>
+  <br />
+  <button value="4">4</button>
+  <button value="5">5</button>
+  <button value="6">6</button>
+  <button value="-">-</button>
+  <br />
+  <button value="7">7</button>
+  <button value="8">8</button>
+  <button value="9">9</button>
+  <button value="*">*</button>
+  <br/>
+  <button value="C">C</button>
+  <button value="0">0</button>
+  <button value="=">=</button>
+  <button value="/">/</button>
+    </div>
+    <br><br>
+
+   <button id="calendar-btn">Calendar</button>
+   <table id="calendar" style="display:none;">
+    <tr>
+        <th colspan="7">February 2023</th>
+    </tr>
+    <tr>
+        <th>Sun</th>
+        <th>Mon</th>
+        <th>Tue</th>
+        <th>Wed</th>
+        <th>Thu</th>
+        <th>Fri</th>
+        <th>Sat</th>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>12</td>
+        <td>13</td>
+        <td>14</td>
+        <td>15</td>
+        <td>16</td>
+        <td>17</td>
+        <td>18</td>
+    </tr>
+    <tr>
+        <td>19</td>
+        <td>20</td>
+        <td>21</td>
+        <td>22</td>
+        <td>23</td>
+        <td>24</td>
+        <td>25</td>
+    </tr>
+    <tr>
+        <td>26</td>
+        <td>27</td>
+        <td>28</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+       <td colspan="7" class="cal">
+        “Forgiveness is the fragrance that the violet
+        <br> sheds on the heel that has crushed it.”
+        <br>  ― Mark Twain
+         <!-- میں جو سر بہ سجدہ ہوا کبھی تو زمیں سے آنے لگی صدا 
+        <br>ترا دل تو ہے صنم آشنا تجھے کیا ملے گا نماز میں -->
+    </td> 
+    </tr>
+   </table>
+   <br><br>
+   <button id="showConverter">Converter</button>
+   <div id="converter" style="display: none;">
+     <p> This is a basic converter with options to convert between USD and PKR, as well as between feet(FT) and meters(M). </p>
+     <input type="text" id="amount">
+     <select id="from">
+       <option value="USD">USD</option>
+       <option value="PKR">PKR</option>
+       <option value="FT">FT</option>
+       <option value="M">M</option>
+     </select>
+     <select id="to">
+       <option value="USD">USD</option>
+       <option value="PKR">PKR</option>
+       <option value="FT">FT</option>
+       <option value="M">M</option>
+     </select>
+     <button onclick="convert()">Convert</button>
+     <p id="result"></p>
+   </div>
+    <br><br>
+
+    <button id="click-counter">Click me!</button>
+    <p class="abc" id="counter-display"></p>
+  
+    
+
+  </main>
+</body>
   <script>
     alert("Welcome to the Button Button Project! Click the buttons to see what they do and have fun exploring!");
+    
+  //  Apologetic
+  {
+      var modal = document.getElementById("myModal");
+      var btn = document.getElementById("myBtn");
+      var span = document.getElementsByClassName("close")[0];
+      btn.onclick = function() {
+      modal.style.display = "block";
+      }
+      span.onclick = function() {
+      modal.style.display = "none";
+      }
+      window.onclick = function(event) {
+      if (event.target == modal) {
+      modal.style.display = "none";
+      }
+      }
+      }
+
 
 
     const poswordButton = document.getElementById("pos-word-button");
@@ -910,208 +1170,11 @@
       document.getElementById("showAnswer").style.display = "none";
       }
       }
-
+      
 </script>
-</head>
-<body style="margin: 2%;">
-  <header>
-    <h1>Button Button</h1>
-  </header>
-  <nav>
-    <!-- Add navigation links here -->
-  </nav>
-  <aside>
-    <!-- Add sidebar content here -->
-  </aside>
-  <main>
-    <p>When you click on any button, it will show you the thing mentioned in the button. You can click most of the buttons multiple times.</p>
-
-    <button id="pos-word-button">Positive Word</button>
-    <p id="pos-word-definition"></p>
-
-    <button id="neg-word-button">Negative Word</button>
-    <p id="neg-word-definition"></p>
-
-    <button id="story-button">Short Story</button>
-    <p id="short-story"></p>
-
-    <button id="longstory-button">Long Story</button>
-    <p id="long-story"></p>
-
-    <button id="fact-Button">Random Fact</button>
-    <p id="fact-Display"></p>
-   
-   <button id="jokeBtn">Random Joke </button>
-   <div id="jokeContainer"></div>
-   <br>
-
-   <button id="quoteBtn"> Random Quote </button>
-   <div id="quoteContainer"></div>
-   <br>
-
-    <button id="songbutton" onclick="displaySong()">Random Song</button>
-    <audio id="audioPlayer" controls style="display: none;"></audio>    
-    <p id="songdisplay"></p>
-    
-   <button id="random-image-btn">Random Image</button>
-   <div class="image-container">
-     <img id="random-image" src="">
-   </div>
-   <br><br>
-    
-    <button id="startBtn">Start</button>
-    <button id="stopBtn">Stop</button>
-    <button id="resetBtn">Reset</button>
-    <div class="abc" id="stopwatch"></div>
-    <br>
-
-    <button id="show-time-button">Current Local Time</button>
-    <div id="clock"></div>
-    <br><br>
-
-    <button id="dino-game-button">Play Dino Game</button>
-    <div id="game-container" style="display:none;">
-    <iframe style="height: 200px;" src="http://www.trex-game.skipser.com/" width="100%"></iframe>
-    </div>
-    
-<!-- Math -->
-
-    <p>
-    <button onclick="generateProblem()">Arithmetic Challenge</button>
-    </p>
-    <p id="problem"></p>
-    <p id="answer" style="display: none;"></p>
-    <p id="show-answer" style="display: none;">
-    <button id="showAnswer" onclick="showAnswer()">Show Answer</button>
-    </p>
-
-    <button id="calculator-button">Calculator</button>
-    <div id="calculator" style="display:none;">
-  <input type="text" id="expression" disabled />
-  <br />
-  <button value="1">1</button>
-  <button value="2">2</button>
-  <button value="3">3</button>
-  <button value="+">+</button>
-  <br />
-  <button value="4">4</button>
-  <button value="5">5</button>
-  <button value="6">6</button>
-  <button value="-">-</button>
-  <br />
-  <button value="7">7</button>
-  <button value="8">8</button>
-  <button value="9">9</button>
-  <button value="*">*</button>
-  <br/>
-  <button value="C">C</button>
-  <button value="0">0</button>
-  <button value="=">=</button>
-  <button value="/">/</button>
-    </div>
-    <br><br>
-
-   <button id="calendar-btn">Calendar</button>
-   <table id="calendar" style="display:none;">
-    <tr>
-        <th colspan="7">February 2023</th>
-    </tr>
-    <tr>
-        <th>Sun</th>
-        <th>Mon</th>
-        <th>Tue</th>
-        <th>Wed</th>
-        <th>Thu</th>
-        <th>Fri</th>
-        <th>Sat</th>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-        <td>4</td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td>6</td>
-        <td>7</td>
-        <td>8</td>
-        <td>9</td>
-        <td>10</td>
-        <td>11</td>
-    </tr>
-    <tr>
-        <td>12</td>
-        <td>13</td>
-        <td>14</td>
-        <td>15</td>
-        <td>16</td>
-        <td>17</td>
-        <td>18</td>
-    </tr>
-    <tr>
-        <td>19</td>
-        <td>20</td>
-        <td>21</td>
-        <td>22</td>
-        <td>23</td>
-        <td>24</td>
-        <td>25</td>
-    </tr>
-    <tr>
-        <td>26</td>
-        <td>27</td>
-        <td>28</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-       <td colspan="7" class="cal">
-        “Forgiveness is the fragrance that the violet
-        <br> sheds on the heel that has crushed it.”
-        <br>  ― Mark Twain
-         <!-- میں جو سر بہ سجدہ ہوا کبھی تو زمیں سے آنے لگی صدا 
-        <br>ترا دل تو ہے صنم آشنا تجھے کیا ملے گا نماز میں -->
-    </td> 
-    </tr>
-   </table>
-   <br><br>
-   <button id="showConverter">Converter</button>
-   <div id="converter" style="display: none;">
-     <p> This is a basic converter with options to convert between USD and PKR, as well as between feet(FT) and meters(M). </p>
-     <input type="text" id="amount">
-     <select id="from">
-       <option value="USD">USD</option>
-       <option value="PKR">PKR</option>
-       <option value="FT">FT</option>
-       <option value="M">M</option>
-     </select>
-     <select id="to">
-       <option value="USD">USD</option>
-       <option value="PKR">PKR</option>
-       <option value="FT">FT</option>
-       <option value="M">M</option>
-     </select>
-     <button onclick="convert()">Convert</button>
-     <p id="result"></p>
-   </div>
-    <br><br>
-
-    <button id="click-counter">Click me!</button>
-    <p class="abc" id="counter-display"></p>
-
-  
-    
-
-  </main>
 <footer>    
       <p style="text-align: center;">Project made with the great help of ChatGPT from <a href="https://openai.com">OpenAI</a><br></p>
       <p style="text-align: center; color: rgb(227, 93, 93);">Disclaimer: This is for educational purposes only.</p>
+      <p style="text-align: center;">Dedicated to my teacher, as a token of apology and appreciation for their guidance.</p>
 </footer>
-</body>
 </html>
